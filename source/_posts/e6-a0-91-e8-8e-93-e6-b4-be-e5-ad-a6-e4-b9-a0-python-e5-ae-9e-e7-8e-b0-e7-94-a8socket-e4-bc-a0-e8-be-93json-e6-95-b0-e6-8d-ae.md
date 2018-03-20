@@ -1,0 +1,89 @@
+---
+title: 树莓派学习-python实现用socket传输json数据
+id: 186
+categories:
+  - 树莓派学习
+date: 2017-12-11 22:56:16
+tags:
+---
+
+今晚完成了用socket传输温湿度数据的小案例，在这里记录一下。
+
+1.服务端代码
+<pre class="lang:default decode:true " title="服务端代码">import socket
+ip_port = ('127.0.0.1',8088) 
+BUFSIZE=1024
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM) 
+s.bind(ip_port) 
+s.listen(5)
+
+while True: 
+conn,addr=s.accept() 
+print('接到来自%s的连接' %addr[0])
+while True: 
+msg=conn.recv(BUFSIZE) 
+if len(msg) == 0:break #如果不加,那么正在链接的客户端突然断开,recv便不再阻塞,死循环发生
+print(msg,type(msg))
+conn.send(msg.upper()) 
+conn.close() 
+s.close()</pre>
+&nbsp;
+
+2.客户端代码
+<div>
+<pre class="lang:default decode:true  " title="客户端代码">import socket
+import smbus
+import time
+import json
+
+#建立初始连接
+ip_port=('127.0.0.1',8088)
+BUFSIZE=1024
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect_ex(ip_port)           
+
+while True:                          
+    # 获取I2C bus
+    bus = smbus.SMBus(1)
+
+    # SHT31 地址, 0x44(68)
+    bus.write_i2c_block_data(0x44, 0x2C, [0x06])
+
+    time.sleep(0.5)
+
+    # SHT31 地址, 0x44(68)
+    # 从 0x00(00)读数据, 6 bytes
+    # Temp MSB, Temp LSB, Temp CRC, Humididty MSB, Humidity LSB, Humidity CRC
+    data = bus.read_i2c_block_data(0x44, 0x00, 6)
+
+    # 转换成温湿度及获取当前的时间
+    temp = data[0] * 256 + data[1]
+    cTemp = -45 + (175 * temp / 65535.0)
+    fTemp = -49 + (315 * temp / 65535.0)
+    humidity = 100 * (data[3] * 256 + data[4]) / 65535.0
+    timer=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+
+    # 输出到屏幕
+    print ("Temperature in Celsius is : %.2f C" %cTemp)
+    print ("Temperature in Fahrenheit is : %.2f F" %fTemp)
+    print ("Relative Humidity is : %.2f %%RH" %humidity)
+
+    #组装json数据并发送 
+    msg1={'time':timer,'Celsius':str(cTemp),'Humidity':str(humidity)}
+    jmsg1=json.dumps(msg1)
+    if len(jmsg1) == 0:continue
+    s.sendall(jmsg1.encode('utf-8'))         
+
+#确认返回
+    feedback=s.recv(BUFSIZE)                         
+    print(feedback.decode('utf-8'))
+
+#连接关闭
+s.close()</pre>
+
+&nbsp;
+
+</div>
+3.实现效果
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/捕获3-300x133.png)

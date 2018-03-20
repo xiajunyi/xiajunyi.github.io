@@ -1,0 +1,51 @@
+---
+title: 树莓派学习-ngrok实现开机自启及手机远程SSH访问
+id: 195
+categories:
+  - 树莓派学习
+date: 2017-12-16 15:36:27
+tags:
+---
+
+在上一篇的配置中实现了ngrok对http协议的内网穿透，在此基础上我做了两个优化
+
+1.开机自动启动ngrok客户端，摆脱了手动启动一次需要敲很长的命令的尴尬。
+
+2.实现了指定固定端口远程ssh连接到树莓派，不用每次先登进树莓派获得现在随机分配的tcp端口了。
+
+好了，废话太多，直接来步骤吧：
+
+**VPS端**
+<pre class="theme:github lang:default decode:true ">#设置centOS开机启动ngrokd
+vi /etc/rc.d/rc.local
+#加入下面内容
+cd /root/ngrok &amp;&amp; NGROK_DOMAIN="www.xiajunyi.com" &amp;&amp; bin/ngrokd -domain="$NGROK_DOMAIN" -httpAddr=":8331" -httpsAddr=":8332" - 
+tunnelAddr=":8333" &amp;</pre>
+
+**树莓派端**
+<pre class="theme:github lang:default decode:true">#指定多端口协议启动方式的配置
+vi /home/pi/ngrox-cust/bin/linux_arm/ngrok.cfg
+#加入下面内容
+server_addr: "www.xiajunyi.com:8333"
+trust_host_root_certs: false
+tunnels:
+  ssh:
+    remote_port: 3322
+    proto:
+      tcp: 22
+  www:
+    subdomain: pi
+    proto:
+      http: 80</pre>
+<pre class="theme:github lang:default decode:true">#设置树莓派开机启动ngrok
+vi /etc/rc.local
+#加入下面内容
+cd /home/pi/ngrox-cust/bin/linux_arm &amp;&amp; ./ngrok -config=ngrok.cfg start ssh www</pre>
+
+&nbsp;
+
+看效果图，下面是我用android手机中的juicessh软件成功连接到树莓派中，以后可以随时随地操作树莓派喽！![](http://www.xiajunyi.com/wp-content/uploads/2017/12/Screenshot_2017-12-16-15-28-51-640_com.sonelli.juicessh.png)
+
+&nbsp;
+
+&nbsp;

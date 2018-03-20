@@ -1,0 +1,58 @@
+---
+title: 树莓派学习-SHT31温湿度读取（I2C接口）
+id: 149
+categories:
+  - 树莓派学习
+date: 2017-12-10 19:13:38
+tags:
+---
+
+**1.开启树莓派的I2C功能**
+
+执行下面命令，进入下图中的选项框后，找到I2C配置，打开即可。
+<pre class="lang:default decode:true ">sudo raspi-config</pre>
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/捕获-2-300x192.png)
+
+**2.连接SHT31与树莓派**
+
+参考及实物图如下：
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/pi-and-sht31_bb-768x960-240x300.png)![](http://www.xiajunyi.com/wp-content/uploads/2017/12/IMG_20171210_190749-225x300.jpg)
+
+**3.python代码**
+
+sht31.py：
+<pre class="lang:default decode:true ">import smbus
+import time
+while(1):
+# 获取 I2C bus
+bus = smbus.SMBus(1)
+
+# SHT31 地址, 0x44(68)
+bus.write_i2c_block_data(0x44, 0x2C, [0x06])
+
+time.sleep(0.5)
+
+# SHT31 地址, 0x44(68)
+# 从 0x00(00)读取数据, 6 bytes
+# Temp MSB, Temp LSB, Temp CRC, Humididty MSB, Humidity LSB, Humidity CRC
+data = bus.read_i2c_block_data(0x44, 0x00, 6)
+
+# 转换数据
+temp = data[0] * 256 + data[1]
+cTemp = -45 + (175 * temp / 65535.0)
+fTemp = -49 + (315 * temp / 65535.0)
+humidity = 100 * (data[3] * 256 + data[4]) / 65535.0
+
+# 输出数据
+print ("Temperature in Celsius is : %.2f C" %cTemp)
+print ("Temperature in Fahrenheit is : %.2f F" %fTemp)
+print ("Relative Humidity is : %.2f %%RH" %humidity)
+time.sleep(1)</pre>
+
+**4.结果如图：**
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/温湿度-300x184.png)
+
+结果证明，SHT31比DHT11准确的不是一点半点了，中间几乎无偏差，还不用自己做校验，看来还是一分价钱一分货呀！

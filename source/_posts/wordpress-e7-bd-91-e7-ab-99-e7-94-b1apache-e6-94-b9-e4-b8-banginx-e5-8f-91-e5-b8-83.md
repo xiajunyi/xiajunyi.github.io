@@ -1,0 +1,102 @@
+---
+title: wordpress网站由apache改为nginx发布
+id: 345
+categories:
+  - WORDPRESS
+  - 编程语言
+date: 2018-01-27 20:17:40
+tags:
+---
+
+我的wordprss网站环境最开始是由LAMP集成软件生成的发布环境，由于apache作为web服务太占用内存，所以准备改为nginx。下面开始操作：
+
+参考链接：[https://www.androiddev.net/webserver-apache-to-nginx/](https://www.androiddev.net/webserver-apache-to-nginx/) 
+
+1.停掉httpd当前服务，禁用重启
+
+<pre class="prettyprint lang-bsh">#停掉httpd
+service httpd stop
+#开机重启后，apache服务不再启动p       
+chkconfig httpd off      </pre>
+
+2.安装nginx,这里以centos系统为例
+
+<pre class="prettyprint lang-bsh">yum -y install nginx</pre>
+
+3.安装php-fpm
+
+*   PHP-FPM (PHP-FastCGI Process Manager) 是目前最常用的一个PHP FastCGI的实现。通俗的讲，这个模块在Nginx和PHP之间桥梁，使之可以互相通信和交换。&nbsp;安装及启动过程如下：
+
+<pre class="prettyprint lang-bsh">yum install php-fpm
+/etc/init.d/php-fpm start
+chkconfig php-fpm on</pre>
+
+4.编辑nginx配置文件
+
+<pre class="prettyprint lang-bsh">vi /etc/nginx/conf.d/virtual.conf</pre>
+
+*   <span style="line-height:1.5;">加入类似如下配置:</span>
+
+<pre class="prettyprint lang-xml">#转发给wordpress网站
+server {
+    listen 80; 
+    server_name www.xiajunyi.com;        
+    access_log /var/log/nginx/aaa/access.log;   #access_log属于ngx_http_log_module的设置, 缺省level为info
+    error_log /var/log/nginx/aaa/error.log;     #error_log属于core module, 缺省的level是error 
+
+    location / {
+             root /data/www/www.xiajunyi.com;
+             index index.php index.html index.htm;     #由于是PHP类型的动态页面为主，所以把index.php放在前面效率会更高些
+             # try_files $uri $uri/ /index.php?$args;   #普通php网站因为没有rewrite的话，这个不需要
+    }
+
+    error_page 404 /404.html;         #error_page errcode uri (也就是说出现了404错误，会请求/404.html)
+    location = /404.html {            #这是一个典型的location
+             root /data/www/www.xiajunyi.com;
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+             root /data/www/www.xiajunyi.com;
+    }
+
+    # 这种写法可以防止把恶意程序伪装成.jpg之类的攻击，（其实有个更简单的方法，就是把php.ini中的cgi.fix_pathinfo=0，但有时候简单的修改cgi.fix_pathinfo会造成有的php脚本出错)
+    location ~ [^/]\.php(/|$) {
+             root /data/www/www.xiajunyi.com;
+             fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+             if (!-f $document_root$fastcgi_script_name) {
+                     return 404;
+             }
+             #try_files $uri =404;         #这个try_files说明：对于.php文件，直接执行$uri, 如果找不到这个$uri,直接给出404错误，（和 location / 定义不同！），主要是为了防止 伪装成图片的攻击  (目前看，最安全的方式，是用上面那一句话，官方推荐的）
+             # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+             fastcgi_pass 127.0.0.1:9000;
+             fastcgi_index index.php;
+             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+             include fastcgi_params;
+    }
+    location ~ /\.ht {
+             deny all;
+    }
+ }</pre>
+
+
+5.新建日志目录并赋权限
+
+<pre class="prettyprint lang-bsh">mkdir -p /var/log/nginx/aaa
+chown -R nginx:adm  /var/log/nginx/aaa</pre>
+
+6.如果这时候直接启动nginx,然后访问站点，可能会报如下错误
+
+<pre class="prettyprint lang-html">Your PHP installation appears to be missing the MySQL extension which is required by WordPress.</pre>
+
+7.解决上面问题需要安装最新的php-mysql，我的是centOS，命令如下：
+
+<pre class="prettyprint lang-bsh">yum update
+yum install php-mysql</pre>
+
+8.启动nginx，ps:<span style="line-height:1.5;">这时候如果访问没有生效，reboot一下就可以了！</span> 
+
+<pre class="prettyprint lang-bsh">service nginx start</pre>
+
+
+9.具体能提升多少，就看后续的访问的效果了

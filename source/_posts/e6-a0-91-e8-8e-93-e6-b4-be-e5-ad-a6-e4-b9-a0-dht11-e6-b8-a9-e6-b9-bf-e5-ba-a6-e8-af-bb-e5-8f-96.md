@@ -1,0 +1,88 @@
+---
+title: 树莓派学习-DHT11温湿度读取（GPIO接口）
+id: 147
+categories:
+  - 树莓派学习
+date: 2017-12-10 18:35:30
+tags:
+---
+
+**1.接线顺序可以参照下图：**
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/20161108083724411-300x179.png)![](http://www.xiajunyi.com/wp-content/uploads/2017/12/IMG_20171208_001005-225x300.jpg)
+
+**2.python代码如下所示，DHT11.py：**
+<pre class="lang:default decode:true ">import RPi.GPIO as GPIO 
+import time 
+
+defaultT=14
+defaultS=50
+
+while(1):
+channel =4 
+GPIO.setmode(GPIO.BCM)
+data = [] 
+j = 0
+time.sleep(1) 
+GPIO.setup(channel, GPIO.OUT) 
+GPIO.output(channel, GPIO.LOW) 
+time.sleep(0.02) 
+GPIO.output(channel, GPIO.HIGH) 
+GPIO.setup(channel, GPIO.IN)
+
+while GPIO.input(channel) == GPIO.LOW: 
+continue 
+while GPIO.input(channel) == GPIO.HIGH: 
+continue
+
+while j &lt; 40: 
+k = 0 
+while GPIO.input(channel) == GPIO.LOW: 
+continue 
+while GPIO.input(channel) == GPIO.HIGH: 
+k += 1 
+if k &gt; 100: 
+break 
+if k &lt; 8: 
+data.append(0) 
+else: 
+data.append(1)
+
+j += 1
+#print ("sensor is working.") 
+print (data)
+
+humidity_bit = data[0:8] 
+humidity_point_bit = data[8:16] 
+temperature_bit = data[16:24] 
+temperature_point_bit = data[24:32] 
+check_bit = data[32:40]
+
+humidity = 0 
+humidity_point = 0 
+temperature = 0 
+temperature_point = 0 
+check = 0
+
+for i in range(8): 
+humidity += humidity_bit[i] * 2 ** (7-i) 
+humidity_point += humidity_point_bit[i] * 2 ** (7-i) 
+temperature += temperature_bit[i] * 2 ** (7-i) 
+temperature_point += temperature_point_bit[i] * 2 ** (7-i) 
+check += check_bit[i] * 2 ** (7-i)
+
+tmp = humidity + humidity_point + temperature + temperature_point
+
+if check == tmp:
+defaultT=temperature
+defaultS=humidity
+print ("temperature :", temperature, "*C, humidity :", humidity, "%") 
+else: 
+print ("temperature :", defaultT, "*C, humidity :", defaultS, "%") 
+time.sleep(0.5)
+GPIO.cleanup()
+</pre>
+
+**3.运行结果如图：**
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/捕获-1-300x166.png)

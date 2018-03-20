@@ -1,0 +1,86 @@
+---
+title: 树莓派学习-搭建外网ngrok穿透内网访问到树莓派
+id: 192
+categories:
+  - 树莓派学习
+date: 2017-12-14 22:57:25
+tags:
+---
+
+今晚很是激动，经过昨晚和今晚的努力，终于实现了从外网访问到树莓派了，写一篇文章记录一下喽。
+
+**环境：**
+
+搬瓦工VPS端(centOs6)
+
+树莓派3b(基于Arm)
+
+**步骤：**
+
+1.安装git、gcc、go等
+<pre class="lang:default decode:true">yum install mercurial git gcc golang</pre>
+2.安装 supervisor ，这样可以保持服务运行
+<pre class="lang:default decode:true">yum install supervisor</pre>
+3.git下载ngrok
+<pre class="lang:default decode:true">cd /root
+#官方地址，可能会报错，最近应该已经修复
+git clone https://github.com/inconshreveable/ngrok.git
+#修复地址，不会报错，感谢 tutumcloud
+#git clone https://github.com/tutumcloud/ngrok.git</pre>
+4.证书生成
+<pre class="lang:default decode:true ">cd /root/ngrok
+#这里修改为自己的域名
+NGROK_DOMAIN="www.xiajunyi.com"
+openssl genrsa -out rootCA.key 2048
+openssl req -x509 -new -nodes -key rootCA.key -subj "/CN=$NGROK_DOMAIN" -days 5000 -out rootCA.pem
+openssl genrsa -out device.key 2048
+openssl req -new -key device.key -subj "/CN=$NGROK_DOMAIN" -out device.csr
+openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</pre>
+5.证书的复制准备工作
+<pre class="lang:default decode:true">\cp rootCA.pem assets/client/tls/ngrokroot.crt -f
+\cp device.crt assets/server/tls/snakeoil.crt -f
+\cp device.key assets/server/tls/snakeoil.key -f</pre>
+6.生成服务端的ngrokd
+<pre class="lang:default decode:true ">cd /root/ngrok
+make release-server</pre>
+7.服务端配置并启动ngrokd
+<pre class="lang:default decode:true ">cd /root/ngrok
+NGROK_DOMAIN="www.xiajunyi.com"
+#http
+bin/ngrokd -domain="$NGROK_DOMAIN" -httpAddr=":8331" -httpsAddr=":8332" -tunnelAddr=":8333"</pre>
+8.编译给客户端pi上用的ngrokd
+<pre class="lang:default decode:true ">cd /root/ngrok
+GOOS=linux GOARCH=arm make release-client</pre>
+9.把bin目录下的客户端打包
+<pre class="lang:default decode:true ">cd /root/ngrok
+tar -cvf bin.tar bin/</pre>
+10.用scp工具复制bin.tar到树莓派的如下目录
+<pre class="lang:default decode:true ">#解压bin,tar至自定义目录
+tar -zxf /home/pi/ngrox-cust/bin.tar</pre>
+11.客户端配置
+<pre class="lang:default decode:true ">cd /home/pi/ngrox-cust/bin/linux_arm
+vi ngrok.cfg
+#加入如下内容
+server_addr: "www.xiajunyi.com:8333"
+trust_host_root_certs: false</pre>
+
+12.启动客户端
+<pre class="lang:default decode:true ">./ngrok -subdomain pi -proto=http -config=ngrok.cfg 80</pre>
+
+13.记得加入子域名的解析规则
+<pre class="lang:default decode:true">A *.pi 23.83,224,98</pre>
+
+14.测试是否内网穿透成功，可以在树莓派上安装nginx
+<pre class="lang:default decode:true ">sudo apt-get install nginx</pre>
+
+15.访问：[http://pi.www.xiajunyi.com:8331/](http://pi.www.xiajunyi.com:8331/)，成功到达树莓派的nginx主页
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/捕获-3.png)
+
+&nbsp;
+
+参考文章：
+
+1.[https://xicheng412.github.io/2016/09/27/ngrok-config/](https://xicheng412.github.io/2016/09/27/ngrok-config/)
+
+2.[https://www.sfantree.com/ngrok-raspberry-cross-nat/index.html](https://www.sfantree.com/ngrok-raspberry-cross-nat/index.html)

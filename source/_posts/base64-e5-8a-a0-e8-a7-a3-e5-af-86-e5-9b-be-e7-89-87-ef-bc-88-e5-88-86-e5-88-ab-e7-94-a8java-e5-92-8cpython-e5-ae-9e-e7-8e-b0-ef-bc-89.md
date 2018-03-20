@@ -1,0 +1,105 @@
+---
+title: base64加解密图片（分别用java和python实现）
+id: 227
+categories:
+  - JAVA
+  - 编程语言
+date: 2018-01-04 11:22:48
+tags:
+---
+
+**今天实现了python端加密图片传入Spring boot端后解密，在这里记录一下分别用java和python实现base64加解密图片。废话不对说，上代码：** 
+
+
+1.JAVA代码
+
+<pre class="prettyprint lang-java">package com.mzshop.sensors.service.service.impl;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+public class Base64ImageUtil {
+	/**
+	 * 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+	 * @param imgFilePath
+	 * @return
+	 */
+	private String GetImageStr(String imgFilePath) {
+		byte[] data = null;
+
+		// 读取图片字节数组
+		try {
+			InputStream in = new FileInputStream(imgFilePath);
+			data = new byte[in.available()];
+			in.read(data);
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// 对字节数组Base64编码
+		BASE64Encoder encoder = new BASE64Encoder();
+		return encoder.encode(data);// 返回Base64编码过的字节数组字符串
+	}
+
+	/**
+	 * 对字符串进行Base64解码并生成图片
+	 * @param imgStr
+	 * @param imgFilePath
+	 * @return
+	 */
+	private boolean GenerateImage(String imgStr, String imgFilePath) {
+		if (imgStr == null) // 图像数据为空
+			return false;
+		try {
+			// Base64解码
+			BASE64Decoder decoder = new BASE64Decoder();
+			byte[] bytes = decoder.decodeBuffer(imgStr);
+			for (int i = 0; i &lt; bytes.length; ++i) {
+				if (bytes[i] &lt; 0) {// 调整异常数据
+					bytes[i] += 256;
+				}
+			}
+			OutputStream out = new FileOutputStream(imgFilePath);
+			out.write(bytes);
+			out.flush();
+			out.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+}
+</pre>
+
+2.python3代码
+
+<pre class="prettyprint lang-py">#coding=utf-8
+import base64
+
+#读取图片信息
+f=open(r'd:\1.jpg','rb') #二进制方式打开图文件
+ls_f=base64.b64encode(f.read()) #读取文件内容，转换为base64编码
+img_info=str(ls_f,'utf-8')
+f.close()
+print (ls_f)
+
+#还原图片信息
+ls_f2=bytes(img_info, encoding = "utf8")
+imgdata=base64.b64decode(ls_f2)
+file=open(r'd:\2.jpg','wb') 
+file.write(imgdata)
+file.close()</pre>
+
+	好了，留在这里为了下次方面查找，还是四个字：亲测可用！
+
+<div>
+
+</div>

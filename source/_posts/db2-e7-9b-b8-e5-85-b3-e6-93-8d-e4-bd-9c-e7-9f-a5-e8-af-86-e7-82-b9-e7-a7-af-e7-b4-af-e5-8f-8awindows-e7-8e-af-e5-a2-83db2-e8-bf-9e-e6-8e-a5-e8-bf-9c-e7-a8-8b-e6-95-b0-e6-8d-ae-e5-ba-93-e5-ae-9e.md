@@ -1,0 +1,36 @@
+---
+title: db2相关操作知识点积累及WINDOWS环境DB2连接远程数据库实例
+id: 209
+categories:
+  - DB2
+  - 数据库
+date: 2017-12-22 16:34:40
+tags:
+---
+
+1.登陆
+<pre class="lang:default decode:true ">ssh 10.240.40.191</pre>
+2.连接数据库
+<pre class="lang:default decode:true">db2 connect to 数据库名 user 用户名 using 密码</pre>
+3.查询
+<pre class="lang:default decode:true">db2 "slect * from 表名"</pre>
+4.导出
+<pre class="lang:default decode:true">db2 export to [文件名].ixf of ixf select * from [表名]</pre>
+5.导入
+<pre class="lang:default decode:true">db2 import from [文件名].ixf of ixf insert into [表名]</pre>
+6.导出数据库-暂未验证
+可以远程连接到服务器，windows系统可以通过远程连接，linux/unix系统可以通过ssh/telnet连接，在服务器上用db2 connect to 数据库名连接数据库，然后通过db2look -d 数据库名 -e -a -c -o 导出文件名.sql -i 用户名 -w 密码 导出结构，通过db2move 数据库名 export -u 用户名 -p 密码 导出数据；在本地导入前先connect 数据库，然后db2 -td; -cf 导出文件名.sql 在本地根据该文件sql建立数据结构，之后用db2move 数据库名 load -u 用户名 -p 密码 导入数据
+7.断开
+<pre class="lang:default decode:true">disconnect current</pre>
+8.查看数据库配置
+<pre class="lang:default decode:true">get db cfg</pre>
+9.创建指定编码的数据库
+<pre class="lang:default decode:true">create db SRCDB using codeset GBK territory CN</pre>
+10.创建型导入
+<pre class="lang:default decode:true">import from d://xxx.ixf of ixf create into ib_customer_product_bak</pre>
+11.db2修改表结构
+<pre class="lang:default decode:true">alter table 表名 alter 字段 set data type 值类型（长度）</pre>
+12.增加索引&nbsp;
+<pre class="lang:default decode:true">create index 索引名 on 表名 (字段名1,字段名2...)</pre>
+13.增加表字段
+<pre class="lang:default decode:true">alter table 表名 add column 字段1 类型 add column 字段2 类型</pre>

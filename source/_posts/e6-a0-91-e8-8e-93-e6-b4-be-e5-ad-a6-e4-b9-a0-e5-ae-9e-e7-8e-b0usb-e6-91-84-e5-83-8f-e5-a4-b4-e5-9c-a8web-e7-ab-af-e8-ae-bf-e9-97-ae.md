@@ -1,0 +1,40 @@
+---
+title: 树莓派学习-实现USB摄像头在web端访问
+id: 213
+categories:
+  - 树莓派学习
+date: 2017-12-26 22:43:07
+tags:
+---
+
+之前查了很多资料，发现最简便的就是安装motion来管理摄像头，下面是具体实施步骤：
+
+1.系统配置中打开摄像头选项
+<pre class="lang:default decode:true">sudo raspi-config</pre>
+2.安装motion
+<pre class="lang:default decode:true ">sudo apt-get install motion</pre>
+3.配置motion可以一直在后台运行：`start_motion_daemon=yes`
+<pre class="lang:default decode:true">sudo nano /etc/default/motion</pre>
+4.修改motion配置文件，这个文件比较长，请确保以下参数的配置
+<pre class="lang:default decode:true">sudo nano /etc/motion/motion.conf</pre>
+&nbsp;
+<pre class="lang:default decode:true "># Start in daemon (background) mode and release terminal (default: off)
+daemon on
+# The mini-http server listens to this port for requests (default: 0 = disabled)
+stream_port 8081
+# Restrict stream connections to localhost only (default: on)
+stream_localhost off
+# TCP/IP port for the http server to listen on (default: 0 = disabled)
+webcontrol_port 8080
+# Restrict control connections to localhost only (default: on)
+webcontrol_localhost off
+# Output for http server, select off to choose raw text plain (default: on)
+webcontrol_html_output on</pre>
+
+5.启动motion
+<pre class="lang:default decode:true ">sudo motion</pre>
+6.好了，再加上ngrok映射，就可以在外网访问了
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/捕获-6.png)
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/捕获2.png)

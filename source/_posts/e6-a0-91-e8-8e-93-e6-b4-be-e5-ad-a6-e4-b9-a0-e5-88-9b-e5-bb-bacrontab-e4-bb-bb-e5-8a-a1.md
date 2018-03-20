@@ -1,0 +1,31 @@
+---
+title: 树莓派学习-创建crontab任务
+id: 189
+categories:
+  - 树莓派学习
+date: 2017-12-12 22:20:44
+tags:
+---
+
+今晚实现了crontab任务的定义及运行，成功把数据每隔一分钟传输到socket服务端，如下是相关命令的记录：
+
+1.编辑要执行的脚本
+<pre class="lang:default decode:true ">vi /home/pi/python-xjy/cust.sh</pre>
+2.比如我要执行socket客户端程序
+<pre class="lang:default decode:true ">/usr/bin/python3 /home/pi/python-xjy/cust.py
+</pre>
+3.修改脚本权限为可执行
+<pre class="lang:default decode:true">chmod 755 /home/pi/python-xjy/cust.sh</pre>
+4.可以查看目前定义的定时任务，确认是否加过该脚本
+<pre class="lang:default decode:true ">crontab -l</pre>
+5.开始编辑crontab任务
+<pre class="lang:default decode:true ">crontab -e</pre>
+6.加入如下任务（格式为：分 时 日 月 周几 命令）
+<pre class="lang:default decode:true">* * * * * /home/pi/python-xjy/cust.sh 1&gt;/home/pi/python-xjy/log.txt &amp;</pre>
+7.重启crontab
+<pre class="lang:default decode:true ">sudo /etc/init.d/cron restart</pre>
+8.查询crontab各任务的状态
+<pre class="lang:default decode:true ">service cron status</pre>
+&nbsp;
+
+![](http://www.xiajunyi.com/wp-content/uploads/2017/12/timg-1.jpg)

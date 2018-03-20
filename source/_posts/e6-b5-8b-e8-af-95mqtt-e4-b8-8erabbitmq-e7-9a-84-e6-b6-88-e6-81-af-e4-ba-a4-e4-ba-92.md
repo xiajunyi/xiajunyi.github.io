@@ -1,0 +1,133 @@
+---
+title: 测试mqtt与rabbitmq的消息交互
+id: 306
+categories:
+  - rabbitmq学习
+date: 2018-01-09 08:35:04
+tags:
+---
+
+**原理：mqtt客户端发送消息，rabbitmq端通过mqtt集成插件的功能接收到消息，并发送到相应交换（<span style="color:#E53333;">其中该topic类型交换的名字在rabbitmq配置文件中配置，默认为amq.topic</span>）** 
+
+
+1.开启rabbitmq中的mqtt插件
+
+<pre class="prettyprint lang-py">rabbitmq-plugins enable rabbitmq_mqtt</pre>
+
+2.python安装mqtt库文件
+
+<pre class="prettyprint lang-py">pip install paho-mqtt</pre>
+
+3.生产者端代码
+
+<pre class="prettyprint lang-py">import datetime
+import json
+import paho.mqtt.client
+#import sense_hat
+import time
+sleepTime = 1
+# MQTT details
+mqttDeviceId = "Raspberry-Pi:Prototype"
+mqttBrokerHost = "127.0.0.1"
+mqttBrokerPort = 1883
+mqttUser = "guest"
+mqttPassword = "guest"
+mqttTelemetryTopic = "RPi.Data"
+#sense = sense_hat.SenseHat()
+# Callback methods
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+          print("Connected to MQTT broker (RC: %s)" % rc)
+    else:
+          print("Connection to MQTT broker failed (RC: %s)" % rc)
+def on_log(client, userdata, level, buf):
+    print(buf)
+def on_publish(client, userdata, mid):
+    print("Data published (Mid: %s)" % mid)
+def on_disconnect(client, userdata, rc):
+    if rc != 0:
+          print("Unexpected disconnect")
+    print("Disconnected from MQTT broker")
+mqttClient = paho.mqtt.client.Client()
+mqttClient.username_pw_set(mqttUser, mqttPassword)
+# Register callbacks
+mqttClient.on_connect = on_connect
+mqttClient.on_log = on_log
+mqttClient.on_publish = on_publish
+mqttClient.on_disconnnect = on_disconnect
+# Connect to MQTT broker
+mqttClient.connect(mqttBrokerHost, mqttBrokerPort, 60)
+mqttClient.loop_start()
+# Collect telemetry information from Sense HAT and publish to MQTT broker in JSON format
+while True:
+    telemetryData = {}
+    telemetryData["DeviceId"] = mqttDeviceId
+    telemetryData["Timestamp"] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+    #telemetryData["Temperature"] = str(round(sense.get_temperature(), 2))
+    #telemetryData["Humidity"] = str(round(sense.get_humidity(), 2))
+    #telemetryData["Pressure"] = str(round(sense.get_pressure(), 2))
+    telemetryData["Temperature"] = '1111'
+    telemetryData["Humidity"] = '2222'
+    telemetryData["Pressure"] = '3333'
+    telemetryDataJson = json.dumps(telemetryData)
+    mqttClient.publish(mqttTelemetryTopic, telemetryDataJson, 1)
+    time.sleep(sleepTime)
+mqttClient.loop_stop()
+mqttClient.disconnect()</pre>
+
+4.消费者端代码
+
+<pre class="prettyprint lang-py">import pika
+import sys
+
+#指定远程rabbitmq的用户名密码
+username = 'guest'
+pwd = 'guest'
+user_pwd = pika.PlainCredentials(username, pwd)
+
+#创建连接
+s_conn = pika.BlockingConnection(pika.ConnectionParameters('127.0.0.1', credentials=user_pwd))
+
+#在连接上创建一个频道
+channel = s_conn.channel()
+
+# 声明exchange的类型为模糊匹配，这里设置交换为持久化的
+channel.exchange_declare(exchange='amq.topic',exchange_type='topic', durable=True)  
+
+# 创建随机一个队列当消费者退出的时候，该队列被删除。
+result = channel.queue_declare(exclusive=True)
+
+# 创建一个随机队列名字。  
+queue_name = result.method.queue
+
+#绑定键。‘#’匹配所有字符，‘*’匹配一个单词。这里列表中可以为一个或多个条件，能通过列表中字符匹配到的消息，消费者都可以取到
+binding_keys = ['RPi.Data']
+
+#通过循环绑定多个“交换机-队列-关键字”，只要消费者在rabbitmq中能匹配到与关键字相应的队列，就从那个队列里取消息
+for binding_key in binding_keys:
+    channel.queue_bind(exchange='amq.topic',
+                       queue= queue_name,
+                       routing_key=binding_key)
+
+#设置callback等，其中不给rabbitmq发送确认
+def callback(ch, method, properties, body):
+    print(" [x] %r:%r" % (method.routing_key, body))
+channel.basic_consume(callback,queue= queue_name,no_ack=True)
+
+#开始循环接收消息
+print(' [*] Waiting for logs. To exit press CTRL+C')
+channel.start_consuming()</pre>
+
+5.结果如下：
+
+![](http://www.xiajunyi.com/wp-content/uploads/2018/01/捕获.jpg) 
+
+6.rabbitmq管理页面显示情况
+
+（1）交换信息
+
+![](http://www.xiajunyi.com/wp-content/uploads/2018/01/捕获-1.jpg) 
+
+（2）连接信息
+
+![](http://www.xiajunyi.com/wp-content/uploads/2018/01/捕获-3.jpg)

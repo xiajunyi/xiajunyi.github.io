@@ -1,0 +1,29 @@
+---
+title: 常用的apt-get命令
+id: 355
+categories:
+  - LINUX
+  - 编程语言
+date: 2018-01-28 13:07:24
+tags:
+---
+
+<span style="font-family:Consolas, &quot;background-color:#FFFFFF;">**在树莓派上安装和卸载软件时，离不开apt-get命令，下面整理一些常用的apt-get命令：**</span> 
+
+<pre class="prettyprint lang-bsh">#列出所有安装过的软件
+apt list --installed 
+#更新软件源索引
+sudo apt-get update
+#安装xxx软件
+sudo apt-get install xxx
+#将xxx软件升级到最新版本                      
+sudo apt-get upgrade xxx
+＃卸载软件（删除软件包）
+sudo apt-get remove xxx　　　　　
+#自动卸载xxx软件但保留其配置文件
+sudo apt-get autoremove xxx     　　　　　
+#自动卸载xxx软件其删除其配置文件
+sudo apt-get autoremove --purge  xxx　　　　
+#重装同一软件xxx
+sudo apt-get --reinstall install xxx
+　　</pre>

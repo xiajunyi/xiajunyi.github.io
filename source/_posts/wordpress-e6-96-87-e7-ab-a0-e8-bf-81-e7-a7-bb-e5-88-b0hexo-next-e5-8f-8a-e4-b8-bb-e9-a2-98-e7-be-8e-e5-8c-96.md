@@ -1,0 +1,48 @@
+---
+title: wordpress文章迁移到hexo next及主题美化
+id: 474
+categories:
+  - WORDPRESS
+  - 编程语言
+date: 2018-03-18 17:10:01
+tags:
+---
+
+1.在 WordPress 仪表盘中导出数据(“Tools” → “Export” → “WordPress”)，选择导出文章，下载生成的xml文件
+
+2.上传xml到hexo网站的根目录，比如我的/data/www/hexo/
+
+3.安装迁移插件
+<pre class="lang:sh decode:true">#前提是进入hexo网站的根目录
+npm install hexo-migrator-wordpress --save</pre>
+4.执行迁移
+<pre class="lang:sh decode:true">#前提是进入hexo网站根目录
+hexo migrate wordpress xml文件名</pre>
+5.重新编译网站文件并上传github
+<pre class="lang:sh decode:true ">hexo generate
+hexo d</pre>
+
+6.好了，可以访问网站中文章的变化啦！
+
+![](http://www.xiajunyi.com/wp-content/uploads/2018/03/Bu_Huo_777.jpg)
+
+7.后续对主题的跟换和具体网站的美化，可参考[http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html](http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html)
+
+8.想要快速拥有好看的主题吗？最简单粗暴的方法就是找到好看的主题，然后用强大的git clone，比如这个里面的列出的一些[https://www.zhihu.com/question/24422335](https://www.zhihu.com/question/24422335)
+
+（下面以改成yilia主题为例）
+<pre class="lang:sh decode:true">#前提是进入网站的根目录
+git clone https://github.com/litten/hexo-theme-yilia.git theme/yilia
+#修改根目录下的_config.yml，找到theme字段
+theme: yilia
+#重新生成public目录里的资源文件
+hexo s
+#这时候可以通过本地的4000端口访问了
+#如果让通过域名访问的资源生效
+hexo g
+#上传到github
+hexo d</pre>
+
+9.可以看下效果变化啦，欢迎访问[http://hexo.xiajunyi.com](http://hexo.xiajunyi.com)
+
+![](http://www.xiajunyi.com/wp-content/uploads/2018/03/Bu_Huo_888.jpg)
