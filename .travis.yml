@@ -15,8 +15,8 @@ script:
 after_script:
   - cd ./public
   - git init
-  - git config user.name "dkvirus"
-  - git config user.email "3548310748@qq.com"
+  - git config user.name "xiajunyi"
+  - git config user.email "309292581@qq.com"
   - git add .
   - git commit -m "docs:update articles"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
@@ -24,7 +24,7 @@ after_script:
 
 branches:
   only:
-    - blog-source
+    - source
 env:
   global:
-    - GH_REF: github.com/dkvirus/dkvirus_blog.git
+    - GH_REF: github.com/xiajunyi/xiajunyi.github.io.git
