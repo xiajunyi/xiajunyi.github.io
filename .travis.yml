@@ -8,7 +8,7 @@ install:
 
 before_script:
  # - npm install -g gulp
-  - chmod 777 ./node_modules
+  - chmod -R 777 ./node_modules
 
 script:
   - hexo g
