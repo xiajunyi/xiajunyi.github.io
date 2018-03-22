@@ -2,7 +2,12 @@
 
 menu:
   主页: /
-  闲谈: /tags/故事/
+  闲谈故事: /tags/闲谈/
+  树莓派学习: /tags/树莓派/
+  数据库知识: /tags/数据库/
+  乐器知识: /tags/音乐/
+  java编程: /tags/java/
+  rabbitmq: /tags/rabbitmq/
 
 # SubNav
 subnav:
