@@ -52,9 +52,9 @@ reward_type: 2
 # 打赏wording
 reward_wording: '打赏全凭心情，只要对你有帮助就好'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
-alipay: http://www.xiajunyi.com/wp-content/uploads/2018/01/1517063349873.jpg
+alipay: /img/xjy/alipay.jpg
 # 微信二维码图片地址
-weixin: http://www.xiajunyi.com/wp-content/uploads/2018/01/mm_facetoface_collect_qrcode_1517062878773.png
+weixin: /img/xjy/wxpay.png
 
 # 目录
 # 目录设定：0-不显示目录； 1-文章对应的md文件里有toc:true属性，才有目录； 2-所有文章均显示目录
@@ -73,7 +73,7 @@ google_analytics: ''
 favicon: /favicon.png
 
 #你的头像url
-avatar: https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1154863108,3150154335&fm=27&gp=0.jpg
+avatar: /img/xjy/monkey.jpg
 
 #是否开启分享
 share_jia: true
