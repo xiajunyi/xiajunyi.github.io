@@ -1,12 +1,12 @@
-# Hexo Configuration
+ï»¿# Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: xjy's blog
+title: å¤å†›è°Šçš„å°ç«™
 subtitle:
 description:
-author: xjy
+author: å¤å†›è°Šçš„å°ç«™
 language:
 timezone:
 
@@ -85,7 +85,7 @@ deploy:
 
 
 
-#yiliaÖ÷ÌâĞèÒªÌí¼ÓµÄ
+#yiliaä¸»é¢˜é™„åŠ 
 jsonContent:
     meta: false
     pages: false
