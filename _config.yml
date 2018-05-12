@@ -104,3 +104,14 @@ jsonContent:
       excerpt: false
       categories: false
       tags: true
+      
+#RSS 订阅插件
+plugin:
+- hexo-generator-feed
+#RSS 插件配置
+feed:
+  type: rss2
+  path: rss.xml
+  limit: 20
+  hub:
+  content: true
