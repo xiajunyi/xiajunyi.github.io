@@ -83,14 +83,14 @@ share_jia: true
 #具体请参考wiki：https://github.com/litten/hexo-theme-yilia/wiki/
 
 #1、多说
-duoshuo: false
+duoshuo: true
 
 #2、网易云跟帖
-wangyiyun: false
+wangyiyun: true
 
 #3、畅言
-changyan_appid: false
-changyan_conf: false
+changyan_appid: cytCkNokt
+changyan_conf: prod_d15f92d288a4dbf0e9ddf361b4f87fda
 
 #4、Disqus 在hexo根目录的config里也有disqus_shortname字段，优先使用yilia的
 disqus: false
