@@ -13,7 +13,7 @@ menu:
 subnav:
   github: "https://github.com/xiajunyi"
   #weibo: "#"
-  rss: "#"
+  rss: /rss.xml
   #zhihu: "#"
   #qq: "#"
   #weixin: "#"
