@@ -109,6 +109,7 @@ jsonContent:
 plugin:
     - hexo-generator-feed
     - hexo-generator-sitemap
+    - hexo-generator-baidu-sitemap
 #RSS 插件配置
 feed:
   type: rss2
@@ -119,3 +120,7 @@ feed:
 #siteMap插件配置
 sitemap:
     path: sitemap.xml
+
+#baiduSiteMap插件
+baidusitemap:
+    path: baidusitemap.xml
