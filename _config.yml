@@ -105,9 +105,10 @@ jsonContent:
       categories: false
       tags: true
       
-#RSS 订阅插件
+#插件
 plugin:
     - hexo-generator-feed
+    - hexo-generator-sitemap
 #RSS 插件配置
 feed:
   type: rss2
@@ -115,3 +116,6 @@ feed:
   limit: 20
   hub:
   content: true
+#siteMap插件配置
+sitemap:
+    path: sitemap.xml
