@@ -75,16 +75,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: yilia
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: git@github.com:xiajunyi/xiajunyi.github.io.git
-  branch: master
-  message: 'xjy new post:{{now("YYYY-MM-DD HH/mm/ss")}}'
-
-
-
 #yilia主题附加
 jsonContent:
     meta: false
@@ -124,3 +114,18 @@ sitemap:
 #baiduSiteMap插件
 baidusitemap:
     path: baidusitemap.xml
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+##deploy:
+##  type: git
+##  repo: git@github.com:xiajunyi/xiajunyi.github.io.git
+##  branch: master
+##  message: 'xjy new post:{{now("YYYY-MM-DD HH/mm/ss")}}'
+
+deploy:
+  type: sftp
+  host: 23.83.224.98
+  user: root
+  privateKey: /root/.ssh/id_rsa
+  remotePath: /data/www/hexo

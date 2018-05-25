@@ -1,0 +1,24 @@
+stages:
+  - deploy
+  - staging
+    
+cache:
+  paths:
+    - node_modules/
+
+deploy:
+  stage: deploy
+  script:
+    - echo "deploying $CI_BUILD_REF_NAME ..."
+    - npm install
+    - hexo deploy --generate
+  only:
+    - source
+#  when: manual
+
+
+staging:
+  stage: staging
+  script:
+    - echo "staging..."
+
