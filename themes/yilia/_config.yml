@@ -126,6 +126,7 @@ smart_menu:
   friends: '友链'
   aboutme: '关于我'
 
+#友链
 friends:
   xiajunyi的wordpress: https://blog.xiajunyi.com/
   tiger的博客: https://www.abstiger.com/
@@ -136,9 +137,16 @@ friends:
   team19的博客: https://team19.abstiger.com/
   
 
+#关于我
 aboutme: <center>我是一个不甘平庸的码农，我相信知识改变命运，努力带来成功！</center>
 
+#声明
 declare_type: 1
 licensee_author: 夏军谊
 licensee_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 licensee_name: '知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议'
+
+#背景音乐
+background_music:
+ enable: true
+ src: "/music/人生何处不相逢.mp3"
