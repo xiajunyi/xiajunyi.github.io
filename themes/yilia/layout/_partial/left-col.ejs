@@ -33,11 +33,15 @@
 		        <%}%>
 			</div>
 		</nav>
-		<!--开启网易云播放器-->
+		
+	</header>
+	
+</div>
+<!--开启音乐播放器-->
 		<nav class="header-music">
 		<% if (theme.background_music.enable){ %>
-		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="45" loop="-1" src=<%= theme.background_music.src %>></iframe>
+			<audio controls="controls" autoplay="autoplay" loop="loop">
+				<source src=<%= theme.background_music.src %> type="audio/mp3" />
+			</audio>
 		<% } %>
 		</nav>
-	</header>		
-</div>
