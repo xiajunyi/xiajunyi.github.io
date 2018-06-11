@@ -6,13 +6,35 @@
         <% if (!post.noDate){ %>
         <%- partial('post/date', {class_name: 'archive-article-date', date_format: null}) %>
         <% } %>
-        <% if ( !index ){ %>
-        <span class="archive-article-date">
-               阅读量 <span id="busuanzi_value_page_pv"></span>
-        </span>
-        <% } %>
       </header>
     <% } %>
+	<!-- 目录内容 -->
+	<% if (!index && post.toc){ %>
+		<p class="show-toc-btn2" id="show-toc-btn2" onclick="showToc2();" style="display:none">
+			  <span class="btn-bg2"></span>
+			  <span class="btn-text2">文章导航</span>
+			  </p>
+		<div id="toc-article2" class="toc-article2">
+			<span id="toc-close2" class="toc-close2" title="隐藏导航" onclick="showBtn2();">×</span>
+			<strong class="toc-title2">文章目录</strong>
+			   <%- toc(post.content) %>
+			 </div>
+	   <script type="text/javascript">
+		function showToc2(){
+			var toc_article2 = document.getElementById("toc-article2");
+			var show_toc_btn2 = document.getElementById("show-toc-btn2");
+			toc_article2.setAttribute("style","display:block");
+			show_toc_btn2.setAttribute("style","display:none");
+			};
+		function showBtn2(){
+			var toc_article2 = document.getElementById("toc-article2");
+			var show_toc_btn2 = document.getElementById("show-toc-btn2");
+			toc_article2.setAttribute("style","display:none");
+			show_toc_btn2.setAttribute("style","display:block");
+			};
+	   </script>
+		  <% } %>		
+	<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       <% if (post.excerpt && index){ %>
         <%- post.excerpt %>
@@ -22,23 +44,7 @@
       <% } else { %>
         <%- post.content %>
       <% } %>
-	  <%
-	    var sUrl = url.replace(/index\.html$/, '');
-	    sUrl = /^(http:|https:)\/\//.test(sUrl) ? sUrl : 'https:' + sUrl;
-	  %>
-	  <!--版权声明-->
-	  <% if ((theme.declare_type === 2 || (theme.declare_type === 1 && post.declare)) && !index){ %>
-		  <div class="declare">
-		  <strong>本文作者：</strong>
-		  <%= theme.licensee_author%>
-		  <br>
-		  <strong>本文链接：</strong>
-		  <%= sUrl%>
-		  <br>
-		  <strong>版权声明：</strong>本作品采用<a rel="license" href="<%= theme.licensee_url%>"><%= theme.licensee_name%></a>进行许可。转载请注明出处！
-		  <br>
-		  </div>
-	  <% } %>
+
       <% if ((theme.reward_type === 2 || (theme.reward_type === 1 && post.reward)) && !index){ %>
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
