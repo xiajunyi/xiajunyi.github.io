@@ -1,0 +1,30 @@
+---
+title: 'Sql中有关联的两个表,怎么查出一个表中没有对应到另一个表的数据?'
+id: 448
+categories:
+  - DB2
+  - 数据库
+  - 未分类
+date: 2018-02-28 18:01:13
+tags: [db2, 数据库, sql] 
+declare: true
+toc: true
+---
+主要是JPAQUERY的实现方式：假定通过id字段关联。
+
+第1种方法在JPAQUERY没法简单实现: 
+
+``` sql
+select *
+from A
+where id not in (select id from B)
+```  
+
+第2种方法JPAQUERY3.0以上的版本才支持.on: 
+
+``` sql 
+select A.*
+from A LEFT JOIN B ON A.id = B.ID
+WHERE B.ID IS NULL
+``` 
+

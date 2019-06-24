@@ -1,0 +1,586 @@
+---
+title: 基于octopus框架快速开发mzshop
+id: 410
+categories:
+  - 编程语言
+date: 2018/7/17 8:48:19    
+tags: [编程]
+toc: true
+declare: true
+---
+
+
+# 码祖商店
+
+使用Octopus快速开发一个带小程序的微电商项目
+
+## 需求分析
+
+码祖商店是团队向微电商领域发起的一次尝试，一期只设计开发核心模块，包括：用户模块，商品模块、订单模块，前端服务支持网页访问和微信小程序访问。
+
+根据需求理出涵盖的模块如下：
+
++ User模块：用户注册和登录、收货人地址信息管理、购物车信息管理、收藏和关注信息管理
++ Goods模块：商品分类信息（库存、价格、详情等）的生成、查询及删除，且支持多级分类
++ Order模块：订单生成、订单支付、物流状态更新、对应用户和商品信息关联、详情信息管理
++ Octups模块：用于集成各子模块，直接依赖或者远程调用子模块，可实现快速部署
++ Octopus-admin-web模块：后管前端，采用nodeJs编写，可直接调用后台提供的Restful型的接口
++ Octopus-rest-web模块：网站前端，采用nodeJs编写，可直接调用后台提供的Restful型的接口
++ Octopus-miniapp-wechat模块：小程序前端，遵循小程序开发标准，可直接调用后台提供的Restful型的接口
+
+> 注：本文的重点在于学会使用Octopus快速开发一个带小程序的微电商项目，前端的编写不属于本文章的范畴，暂不做介绍。后端核心模块的设计均采用Octopus提供的Fish-skeleton为骨架，开发过程基本相同，因此，下文的内容仅以Goods模块为例介绍如何设计、开发及配合Octopus进行快速部署，相信聪明的你一定能够快速掌握，举一反三！
+
+## 模块设计
+
+Octopus提供Fish-archetype和Octopus-archetype两种原型，开发者可以直接依赖这两种原型分别创建自己的Octopus模块和微服务模块（例如这里的Goods模块），自己不用做过多设计，十分便捷。
+
+下面介绍玛祖商店里的Goods模块和Octopus模块：
+
+### Goods模块
+
+Goods模块，我们可以理解它为微服务框架中的一个子服务，形象的来说即为一个由fish-skeleton(“鱼骨架”)生成的一个“小鱼”。
+
+Goods模块分布如下：
+
++ goods-param --- 参数定义模块，参数均在此模块中定义。
++ goods-domain --- 数据定义模块，描述数据库表结构定义与操作。
++ goods-api --- 内部接口模块，提供service的POJO接口，以及部分公共的常量配置。
++ goods-service --- 核心服务模块，项目中服务接口与对应实现。
++ goods-batch --- 批量服务模块，批处理job与step定义。
++ goods-init --- 初始化与补丁模块，提供完整的初始化系统参数与数据以及每次上线补丁。
++ goods-admin --- 后台管理模块，前后端分离策略，提供给后管前端的服务接口。
++ goods-rest --- http服务模块，提供对外部系统开放的Restful服务接口。
+
+### Octopus模块
+
+Octopus模块，我们可以理解它为用于集成微服务的载体，形象的来说即为一个由octopus-skeleton("八爪鱼骨架")生成的可以承载多个“小鱼”的“八爪鱼”。
+
+Octopus模块分布如下：
+
++ octopus-param --- 参数定义模块，系统中所用参数定义。
++ octopus-domain --- 实体定义模块，数据库表结构定义与操作声明。
++ octopus-online-api --- 联机接口模块，联机接口POJO定义以及公共的常量配置。
++ octopus-online --- 联机服务模块，交易路由与事务保证，可作为依赖也可独立部署。
++ octopus-batch-api --- 批量接口模块，批量接口POJO定义以及公共的常量配置。
++ octopus-batch --- 批量服务模块，组合子服务模块批量，可作为依赖也可独立部署。
++ octopus-init --- 系统初始化与补丁模块，提供完整的初始化系统参数与数据以及每次上线补丁。
++ octopus-test --- 功能测试模块，提供联机online及批量batch的集成测试环境，用于系统的功能性测试。
++ octopus-admin --- 系统后管模块，提供后端接口，对系统的管理与监控，包括参数管理与业务操作，独立部署。
++ octopus-open --- 对外接口模块，基于http协议，提供Restful及Gateful的接口，分别面向用户及商户，独立部署。
+
+### 两模块的关联方式
+
+依赖于Spring Boot的快速部署能力，Goods模块与Octopus模块关联的方式可以自由组合。
+
+常用的有以下两种：
+
++ 方式1：可通过Maven依赖，将Goods相关模块依赖到Octopus相关模块中供Octopus调用
+
++ 方式2：可独立部署Goods相关模块，Octopus通过远程请求调用Goods开放的Restful接口
+
+> 注：下文的示例内容主要围绕方式1进行展开。
+
+## 代码编写
+
+实现Goods模块到Octoups模块的关键步骤可归纳为:自动生成两类模块------>定义各自表对象和参数------>实现具体服务------>整合Goods模块到Octopus中------>通过Octopus开放Restful接口。
+
+下面将以问题的形式列举相关编写示例：
+
+### 如何自动生成模块？
+
+Goods模块和Octopus的生成可使用Octopus提供的原型自动生成。
+
+下面是具体生成方法：
+
++ Goods模块：使用Fish-Archetype原型，groupId和package设置为com.mzshop.goods,artifactId设置为goods，生成步骤可参考[http://repo.krproject.org/gitlab/krproject/fish-archetype/blob/master/README.md](http://repo.krproject.org/gitlab/krproject/fish-archetype/blob/master/README.md)
+
++ Octopus模块：使用Octopus-Archetype原型，groupId和package设置为com.mzshop.octopus,artifactId设置为com.mzshop.octopus,生成步骤可参考[http://repo.krproject.org/gitlab/krproject/fish-archetype/blob/master/README.md](http://repo.krproject.org/gitlab/krproject/fish-archetype/blob/master/README.md)
+
+### 如何定义表对象？
+
+建立表对象和对应的仓库(实现对表的CRUD操作)对象是代码编写中比不可少的环节，代码中可参考自动生成的MarcheJournal类和MarcheJournalRepository类。
+
+下面以Goods表为例：
+
++ MZSHOP_GOODS表部分代码示例
+
+```java
+package com.mzshop.domain;
+import ... ...
+
+@Data
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+@Table(name = "MZSHOP_GOODS")
+public class Goods {
+	@Id
+	@GeneratedValue(generator = "generator")
+	@GenericGenerator(name = "generator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", 
+		parameters = {
+			@Parameter(name = "sequence_name", value = "SEQ_MZSHOP_GOODS")
+		}
+	)
+	@Column(name = "GOODS_ID", nullable = false, scale = 20)
+	private BigDecimal goodsId;	
+	//商品名
+	@Column(name = "NAME", nullable = false, length = 90)
+	private String name;
+	... ...
+} 
+```
+
++ GoodsRepository部分代码示例 
+
+```java
+package com.mzshop.domain;
+import ... ...
+
+public interface GoodsRepository extends JpaRepository<Goods, BigDecimal> {	
+	Page<Goods> findByNameContaining(String name, Pageable pageable);
+	... ...
+}
+```
+
+### 如何定义参数？
+
+常用的参数一般可分为data型参数（直接存入domain的初始化参数）和param型参数（存入公共参数表）两种，参数初始化可参考自动生成的MarcheDummyDataInit类和MarcheDummyParamInit类。
+
+下面分别以初始化插入Goods表和加载渠道控制参数为例：
+
++ 初始化插入Goods表
+
+```java
+package com.mzshop.init.data.impl;
+import ... ...
+
+@Component
+public class GoodsInit implements InitData {	
+	private final Logger logger = LoggerFactory.getLogger(getClass());	
+	@Autowired
+	private GoodsRepository goodsRepository;
+	@Override
+	@Transactional
+	public void init() throws Exception {		
+		this.logger.info("init data:{}", this.getClass().getCanonicalName());	
+		this.logger.info("init Goods");
+		Goods goods = new Goods();
+		goods.setName("核桃");	
+		... ...
+		goods = this.goodsRepository.save(goods);
+	}
+}
+```
+
++ 初始化加载渠道控制参数
+
+```java
+package com.mzshop.init;
+import ... ...
+
+@Component
+public class InboundChannelInit implements InitParam {	
+	private final Logger logger = LoggerFactory.getLogger(getClass());	
+	@Autowired
+	private ParamService paramService;
+	@Override
+	public void init() throws Exception {
+		this.logger.info("init param:{}", this.getClass().getCanonicalName());
+		//InboundChannel类为我们要刷入的参数类，定义方式可参考自动生成的MarcheParam类
+		InboundChannel admin = new InboundChannel();
+		admin.setCode("ADMIN");
+		admin.setIsSign(false);	
+		... ...
+		try {
+			this.paramService.addParameter(ParamConstants.DEFAULT_ORG_ID, admin.getCode(), admin, "Tiger");
+		} catch (ParamException e) {
+			this.logger.error("add parameter InboundChannel:{} failed:{}!", admin, e);
+			throw new RuntimeException(e);
+		}
+	}
+}
+```
+
+### 如何实现具体的服务？
+
+实现新类型的服务需要完成的流程为：定义服务的接入方式--->增加新的Channel--->增加新的Endpoint--->增加新的Handler--->新增具体处理类。
+
+下面以goods-service新增一个查询类交易为例：
+
++ RabbitMQ型服务接入的配置(如直接通过Channel调用可忽略该步骤)
+
+``` java
+package com.mzshop.good.service.config;
+import ... ...
+
+@ConditionalOnProperty(prefix = "good.service", name = "server-rpc-media", havingValue = MarcheRabbitConstants.SERVER_RPC_MEDIA, matchIfMissing = false)
+@Configuration
+@EnableRabbit
+@EnableConfigurationProperties(MarcheServiceProperties.class)
+public class MarcheServiceRabbitConfig {	
+	@Autowired
+	private MarcheServiceProperties goodServiceProperties;	
+	//定义交换
+	@Bean
+	public DirectExchange serviceMarcheExchange() {
+		return new DirectExchange(MarcheRabbitConstants.MARCHE_EXCHANGE_NAME);
+	}
+	//定义队列
+	@Bean
+	public Queue serviceMarcheQueryQueue() {
+		return new Queue(MarcheRabbitConstants.MARCHE_QUERY_QUEUE_NAME);
+	}
+	//绑定交换、队列与路由Key
+	@Bean
+	public Binding bindingMarcheQuery(DirectExchange serviceMarcheExchange, Queue serviceMarcheQueryQueue) {
+		return BindingBuilder.bind(serviceMarcheQueryQueue).to(serviceMarcheExchange).with(MarcheRabbitConstants.MARCHE_QUERY_KEY_NAME);
+	}
+	//建立该队列的监听
+	@Bean
+	public SimpleMessageListenerContainer queryMarcheListenerContainer(ConnectionFactory connectionFactory) {
+		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
+		container.setMessageConverter(jsonMessageConverter());
+		container.setQueueNames(MarcheRabbitConstants.MARCHE_QUERY_QUEUE_NAME);
+		container.setConcurrentConsumers(this.goodServiceProperties.getQueryAmqpConcurrentConsumers());
+		// ...
+		return container;
+	}
+	//建立监听器与Channel的关系	
+	@Bean
+	public AmqpInboundGateway queryMarcheInboundGateway(SimpleMessageListenerContainer queryMarcheListenerContainer) {
+		AmqpInboundGateway gateway = new AmqpInboundGateway(queryMarcheListenerContainer);
+		gateway.setMessageConverter(queryMarcheListenerContainer.getMessageConverter());
+		gateway.setRequestChannelName(MarcheIntegrationConstants.MARCHE_QUERY_CHANNEL_NAME);
+		return gateway;
+	}	
+    ...
+}
+
+```
+
++ 增加新的查询Channel
+
+``` java
+package com.mzshop.goods.service.config;
+import ... ...
+
+@Configuration
+@EnableIntegration
+@IntegrationComponentScan
+public class MarcheServiceIntegrationConfig {
+	@Bean(name = MarcheIntegrationConstants.MARCHE_QUERY_CHANNEL_NAME)
+	public MessageChannel goodQueryChannel() {
+		return new DirectChannel();
+	}
+}
+```
+
++ 增加新的Endpoint（绑定Activator与对应的InputChannel,在内部调用Handler）
+
+```java
+package com.mzshop.goods.service.endpoint.query;
+import ... ...
+
+@MessageEndpoint
+public class MarcheQueryActivator extends AbstractMarcheActivator<MarcheQueryRequest, MarcheQueryResponse> {
+	private final Logger logger = LoggerFactory.getLogger(getClass());	
+	@ServiceActivator(inputChannel = MarcheIntegrationConstants.MARCHE_QUERY_CHANNEL_NAME)
+	public MarcheQueryResponse activate(MarcheQueryRequest request) {
+		MarcheQueryResponse response = new MarcheQueryResponse();
+		try {
+			//这里会调用handler
+			response = doActivate(request);
+		} catch (MarcheException e) {
+			response.setRespCode(e.getRespCode());
+			response.setRespDesc(e.getMessage());
+			this.logger.error("doActivate request {} failed! {}", request, e);
+		}
+		return response;
+	}
+	
+}
+```
+
++ 增加新的Handler（被调用的Handler与Request类型有关）
+
+``` java
+package com.mzshop.good.service.endpoint.query.handler;
+import ... ...
+
+@Component
+public class MarcheQueryTestHandler extends AbstractMarcheHandler<MarcheQueryRequest, MarcheQueryResponse> {
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	@Override
+	public Class<?> getRequestClass() {
+		return MarcheQueryTestRequest.class;
+	}
+	@Override
+	public MarcheQueryResponse doHandle(MarcheQueryRequest request, MarcheJournal journal) throws MarcheException {	
+		MarcheQueryTestRequest req = (MarcheQueryTestRequest) request;
+		if (req == null) {
+			this.logger.error("request can't be null");
+			throw new MarcheException(MarcheRespCode.BADREQUEST, "请求不能为空");
+		}
+		//这里可以调用具体的处理，具体处理类写到对应的service和serviceImp包里即可，这里不再罗列。
+		MarcheQueryTestResponse resp = new MarcheQueryTestResponse();
+		resp.setRespCode(MarcheRespCode.SUCCESS);
+		return resp;
+	}
+}
+```
+
+### 如何整合业务模块到Octopus中？
+
+Octopus模块调用业务模块的方式有两种：直接通过Channel调用和以RabbitMQ为介质调用。下面以整合goods-service模块到octopus-online模块为例。
+
+整合方法如下：
+
++ 在octopus-online的pom文件中增加goos-api和goods-service依赖
+
+``` java
+<!-- goods -->
+<dependency>
+	<groupId>com.mzshop.goods</groupId>
+	<artifactId>goods-api</artifactId>
+</dependency>
+<!-- 若goods单独部署，去除此依赖 -->
+<dependency>
+	<groupId>com.mzshop.goods</groupId>
+	<artifactId>goods-service</artifactId>
+</dependency>
+```
+
++ 方法1：增加与Goods模块调用配置：直接通过Goods模块的Channel调用
+
+``` java
+package com.mzshop.octopus.online.config;
+import ... ...
+
+@Configuration
+@EnableRabbit
+@EnableIntegration
+@IntegrationComponentScan
+public class GoodsClientConfig {
+	... ...		
+    //到Goods服务的网关,下面是直接请求GoodsIntegrationConstants.QUERY_CHANNEL_NAME
+	@MessagingGateway
+	public interface GoodsGateway {	
+		@Gateway(requestChannel = GoodsIntegrationConstants.QUERY_CHANNEL_NAME, replyTimeout = 2, requestTimeout = 200)
+		GoodsQueryResponse query(@Payload GoodsQueryRequest payload);
+	}
+}
+```
+
++ 方法2：增加与Goods模块调用配置：以RabbitMQ为介质调用
+
+``` java
+package com.mzshop.octopus.online.config;
+import ... ...
+
+@Configuration
+@EnableRabbit
+@EnableIntegration
+@IntegrationComponentScan
+public class GoodsClientConfig {	
+	... ...	
+	//配置Channel绑定rabbitmq的交换器与路由key
+	@Bean
+	@Profile(GoodsRabbitConstants.PROFILE)
+	@ServiceActivator(inputChannel = GoodsRabbitConstants.GOODS_QUERY_CHANNEL_NAME)
+	public AmqpOutboundEndpoint goodsQueryOutbound(ConnectionFactory connectionFactory) {
+		AmqpOutboundEndpoint outbound = new AmqpOutboundEndpoint(goodsAmqpTemplate(connectionFactory));
+		outbound.setExchangeName(GoodsRabbitConstants.GOODS_EXCHANGE_NAME);
+		outbound.setRoutingKey(GoodsRabbitConstants.GOODS_QUERY_KEY_NAME);
+		outbound.setExpectReply(true);
+		return outbound;
+	}
+    //到Goods服务的网关,下面请求的则是上面配置中对应的Channel(关于这个Channel的定义，这里直接引用了Goods模块中定义的Channel，我个人觉得最好在octopus-online中定义，这样便于区分。。。)
+	@MessagingGateway
+	public interface GoodsGateway {	
+		@Gateway(requestChannel = GoodsRabbitConstants.GOODS_QUERY_CHANNEL_NAME, replyTimeout = 2, requestTimeout = 200)
+		GoodsQueryResponse query(@Payload GoodsQueryRequest payload);
+	}
+}
+```
+
+### 如何将服务以Restful型接口的形式开放？
+
+Goods模块可以单独部署来开放Restful型接口，但为了统一管理，这里统一将Restful型接口在octopus-rest模块上进行开放，然后通过octopus-onine调用goods-service实现的服务。另外，实现octopus-online的功能需要完成：定义服务的接入方式--->增加新的Channel--->增加新的Endpoint--->增加新的Handler--->调用goods-service，整个流程与goods-service实现具体的服务大同小异，这部分就不再赘述。这里以商品查询业务通过octopus-rest模块开放接口为例。
+
+如下为controller写法以及octopus-rest模块请求octopus-online模块的路由配置：
+
++ 创建GoodsController，开放Restful接口  
+
+```java
+package com.mzshop.octopus.rest.controller.goods;
+import ... ...
+
+@Api("Goods API")
+@RestController
+@RequestMapping(value = "/goods", produces = { MediaType.APPLICATION_JSON_VALUE})
+public class GoodsController {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	@Autowired
+	private MzshopOpenOnlineOutboundGateway mzshopOpenOnlineOutboundGateway;
+	@Autowired
+	private RestGoodsService restGoodsService;
+	@ApiOperation(value = "goods query", notes = "商品列表查询")
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ResponseEntity<RestResponse> goodsList(
+			@RequestParam(required = false) BigDecimal goodsId,
+			@RequestParam(required = false) BigDecimal categoryId,
+			@RequestParam(required = false) String name,
+			@RequestParam(required = false) Boolean isPutaway,
+			@ApiIgnore @PageableDefault(page = 0, size = 20, sort = {"showIndex"}, direction = Direction.ASC) Pageable pageable) {
+		RestResponse restResponse = new RestResponse(RestRespCode.Success, "Success");		
+		MZQ0003Request request = new MZQ0003Request();
+		request.setGoodsId(goodsId);
+		request.setName(name);
+		... ...
+		//此处为请求online，请求配置见下文
+		MZQ0003Response response = (MZQ0003Response)this.mzshopOpenOnlineOutboundGateway.invoke(request);		
+		//响应判断
+		if (OctopusOnlineRespCode.Success.equals(response.getRespCode())) {
+			OctopusPageResponse<GoodsVo> goodsVos = (OctopusPageResponse<GoodsVo>) response.getGoodsModels().map(new GoodsVoConverter());
+			restResponse.setData(goodsVos);
+		} else {
+			//响应信息设置
+			restResponse.setCode(RestRespCode.Failed);
+			restResponse.setMessage("[" + response.getRespCode() + ":" + response.getRespDesc() + "]");
+		}		
+		return ResponseEntity.ok(restResponse);
+	}
+}
+```
+
++ 请求octoups-online模块的路由配置  
+
+```java
+package com.mzshop.octopus.rest.config;
+import ... ...
+
+@Data
+@Configuration
+@EnableRabbit
+@EnableIntegration
+@IntegrationComponentScan
+public class MzshopOpenOnlineClientConfig {
+	//true--单独部署，以RabbitMq为介质调用
+	//false--内部依赖，以Channel调用
+	private boolean rabbitActivated = false;
+	... ...
+	// 到online的请求路由配置
+	@Router(inputChannel = MzshopOpenOnlineClientConfig.ONLINE_ROUTER_OUTBOUND_CHANNEL_NAME)
+	public String mzshopOpenOnlineRoute(OctopusSkeletonOnlineRequest request) {
+		if (request instanceof MzshopFinanceRequest) {
+			return this.rabbitActivated ? MzshopOpenOnlineClientConfig.ONLINE_FINANCE_AMQP_OUTBOUND_CHANNEL_NAME : MzshopOnlineIntegrationConstants.FINANCE_CHANNEL_NAME;
+		} else if {
+			... ...
+		}
+		return null;
+	}	
+	//到online的请求网关配置
+	@MessagingGateway
+	public interface MzshopOpenOnlineOutboundGateway extends OctopusSkeletonOpenOnlineOutboundGateway {
+		@Gateway(requestChannel = MzshopOpenOnlineClientConfig.ONLINE_ROUTER_OUTBOUND_CHANNEL_NAME, replyTimeout = 30 * 1000L)
+		OctopusSkeletonOnlineResponse invoke(OctopusSkeletonOnlineRequest request);
+	}
+}
+
+```
+
+> 注：代码编写涉及面教广，本章节只筛选了几个关键问题点，想要详尽了解各种情况，可参考MZSHOP项目源代码。
+
+## 测试上线
+
+首先，回顾上面的代码编写，我们已经将goods-service模块整合到octopus-online模块中，并打通了octopus-rest模块到octopus-online模块的请求通道；接下来，我们准备启动octopus-admin和octopus-rest两个应用程序进行集成测试，后续通过ansible进行自动化部署、管理和监控即可。
+
+下面是集成到启动的过程：
+
+### octopus-admin模块集成octopus-online模块
+
+octopus-admin模块集成octopus-online模块的服务接入配置可参考上文“代码编写”部分，这里不再赘述,下面是如何配置依赖和properties：
+
++ 在octopus-admin的pom文件中增加octopus-online依赖  
+
+```java
+<!-- 若online单独部署，去除此依赖 -->
+<dependency>
+	<groupId>com.mzshop.octopus</groupId>
+	<artifactId>octopus-online</artifactId>
+</dependency>
+```
+
++ 修改application.properties配置，激活相关profile
+
+```text
+# PROFILE
+spring.profiles.active=default,mzshop-admin,mzshop-admin-monitor,mzshop-admin-schedule,goods-service-init,mzshop-admin-init,mzshop-online-init,mzshop-batch-init,octopus-h2
+
+```
+
+### octopus-rest模块通过RabbitMQ调用octopus-online模块
+
+上一步octopus-online模块已经集成到octopus-admin中发布的。这里实现octopus-rest模块通过RabbitMQ调用它的配置。
+
+具体配置如下：
+
++ 修改octopus-admin的application.properties,激活octopus-online的rabbitmq  
+
+```text
+spring.profiles.active=default,mzshop-admin,mzshop-admin-monitor,mzshop-admin-schedule,goods-service-init,mzshop-admin-init,mzshop-online-init,mzshop-batch-init,octopus-h2,mzshop-online-amqp
+
+# RabbitMQ
+spring.rabbitmq.host=127.0.0.1
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+```
++ 修改octopus-rest的application.properties,激活octopus-rest的RabbitMQ  
+
+```text
+spring.profiles.active=mzshop-open,mzshop-open-monitor,user-service-init,goods-service-init,mzshop-open-init,mzshop-online-init,mzshop-batch-init,mzshop-online-amqp
+
+# RabbitMQ
+spring.rabbitmq.host=127.0.0.1
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+```
+
+### 运行octopus-admin模块和octopus-rest模块
+
+完成了配置，下面就可以运行两个模块了。
+
+运行方法如下：
+
++ windows本地运行：本地需要安装RabbitMQ，然后直接在STS中"run as java application"或者在CMD命令行里"java -jar"运行即可
+
++ 服务器运行：可自定义脚本运行，也可通过ansible进行管理程序的运行，推荐后者
+
+> 注：目前Octopus已支持利用docker-compose编排工具自定义镜像和部署配置，结合ansible的自动化功能，可更加方便快捷的发布自己的项目到本地服务器、远程服务器以及云服务器中。相关运维部署的介绍文档后期会发布，尽请期待！
+
+## 效果展示
+
+Octopus后端完成后，加上前端的配合，就可以完成各种形式的功能了，这里主要展示对外效果截图。
+
+效果展示之前用一张图介绍一下目前各模块的调用关系：
+
+![img](/img/xjy/p47001.png)<br/>
+
++ Swagger-UI展示的Resful接口页面
+
+![img](/img/xjy/p47005.jpg)<br/>
+![img](/img/xjy/p47006.jpg)<br/>
+
++ 前端页面
+
+![img](/img/xjy/p47002.png)<br/>
+
++ 后管页面
+
+![img](/img/xjy/p47003.png)<br/>
+
++ 小程序页面
+
+![img](/img/xjy/p47004.png)<br/>

@@ -1,0 +1,296 @@
+---
+title: 优惠券营销系统的需求分析及实现过程
+id: 408
+categories:
+  - 编程语言
+date: 2018/6/4 15:49:11   
+tags: [运维, 编程]
+toc: true
+declare: true
+---
+![img](/img/xjy/p44001s.jpg)<br/><br/>
+经过大家的共同努力，优惠券终于上线了，虽然暂时还没有业务，相信应该不会太差，现在我们回顾一下优惠券的分析及实现过程。
+
+<!--more-->
+
+## 需求简述 ##
+通过银联前置发来的上行快线二维码消费交易，允许用户在上一笔消费满足一定金额的情况下，由E贸的app向互联网核心发请求领取优惠券，在下次消费时互联网会根据已领优惠券的情况，自动为用户使用优惠券。业务场景如下图：
+
+![img](/img/xjy/p44001.jpg)
+
+主要开发点如下：
++ 券的领取
++ 消费
++ 撤销
++ 消费与撤销冲正
++ 消费后券类型展示查询
++ 券的按账户查询
++ 批量清算修改
++ 批量退货修改
++ 批量调账修改
+
+
+## 难点分析 ##
++ **兼容性** 
+我们与银联之间的联机和对账都是**整笔金额**，银联不知道优惠金额的存在，所以无论是清算、退货、调账都要考虑优惠券金额部分。
+
++ ** 扩展性 ** 
+原二维码交易用到的applepayTrans表关联太多交易，本着**只做加法，不做乘法**的原则，要考虑通过流水号关联到新定义的优惠券相关表。
+
++ ** 移植性 ** 
+联机交易除了外部的撤销冲正接口，还要写内部冲正，而且以后可能移植到其他系统，所以考虑在gateway中构造优惠券自己的**dispatcher模块**来分离processer中的大量逻辑。
+
++ ** 稳定性 ** 
+优惠券在领取的时候需要控制相关数量和金额，需要考虑单独设计一张统计表，用**悲观锁逻辑**控制统计值的增加。
+
+
+## 参数定义 ##
+参数名称|示例值|备注
+-|-|-|-
+每个设备允许的账户数|3|所有类型共用的一个参数
+优惠券类型|A1|某种类型券的主键
+优惠券描述|满100减5|文字描述
+优惠券金额|5|券面金额
+发放支持的商户号列表|xxxxx,yyyyyy|发放时校验
+发放开始时间|20180601|发放时校验
+发放结束时间|20180901|发放时校验
+发放起始金额|150|上一笔消费满足多少金额才允许发放
+单日领取总数限制|1000|需悲观锁控制
+累计领取总数限制|1000000|需悲观锁控制
+领取频次及对应的张数|该频次开始时间：20180601 <br/>该频次技术时间：20180608 <br/>该频次每账户允许张数：100<br/>...|每种类型的券支持设置多段频次参数
+使用支持的商户号列表|xxxxx,yyyyyy|使用时校验
+使用起始金额|100|使用时校验
+使用截止日期|20181001|使用时校验
+201账户|3002796887|清算时需要获取的对公户
+
+
+## 表设计 ##
+
+![img](/img/xjy/p44002.png)
+
+## 包类设计 ##
+
+```text
+│  MkCouponDispatcher.java
+│  
+├─api
+│      CouponAdjustRq.java
+│      CouponAdjustRs.java
+│      CouponBindRq.java
+│      CouponBindRs.java
+│      CouponBindStatus.java
+│      CouponCanordReverserRq.java
+│      CouponCanordReverserRs.java
+│      CouponCanordRq.java
+│      CouponCanordRs.java
+│      CouponCanrevReverserRq.java
+│      CouponCanrevReverserRs.java
+│      CouponCanrevRq.java
+│      CouponCanrevRs.java
+│      CouponConrevReverserRq.java
+│      CouponConrevReverserRs.java
+│      CouponConrevRq.java
+│      CouponConrevRs.java
+│      CouponConsumReverserRq.java
+│      CouponConsumReverserRs.java
+│      CouponConsumRq.java
+│      CouponConsumRs.java
+│      CouponInfo.java
+│      CouponProvideRq.java
+│      CouponProvideRs.java
+│      CouponQueryRq.java
+│      CouponQueryRs.java
+│      CouponRequest.java
+│      CouponResponse.java
+│      
+├─reverser
+│      CouponCanordReverser.java
+│      CouponCanrevReverser.java
+│      CouponConrevReverser.java
+│      CouponConsumReverser.java
+│      
+└─service
+    │  CouponService.java
+    │  
+    └─impl
+            CouponServiceImpl.java
+
+```
+
+## 问题及解决 ##
+
+### 悲观锁没控住？ ###
+
+#### 之前的写法 ####
+该写法导致的问题是统计值做加法时乱掉了，最后分析的原因为：两次singleResult导致加锁的记录与return出的记录值不同。
+
+``` java
+    /**
+	 * 获取悲观锁-获取发放统计记录表中当日该类型的悲观锁
+	 * @param bizDate
+	 * @param couponType
+	 */
+	@Transactional
+	private MkCouponBindSum getLock(Date bizDate, String couponType) {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		String sBizDate = sf.format(bizDate);
+		//查询当天统计记录
+		QMkCouponBindSum qMkCouponBindSum = QMkCouponBindSum.mkCouponBindSum;
+		JPAQuery query = new JPAQuery(em).from(qMkCouponBindSum)
+				.where(qMkCouponBindSum.sumKey.eq(sBizDate),
+						   qMkCouponBindSum.couponType.eq(couponType),
+						   qMkCouponBindSum.typeKey.eq(TypeKeyDef.D));
+		//如果没有则新建
+		MkCouponBindSum mkCouponBindSum = query.singleResult(qMkCouponBindSum);
+		if (mkCouponBindSum==null){
+			mkCouponBindSum = new MkCouponBindSum();
+			mkCouponBindSum.setSumKey(sBizDate);
+			mkCouponBindSum.setCouponType(couponType);
+			mkCouponBindSum.setTypeKey(TypeKeyDef.D);
+			mkCouponBindSum.setCouponsAmount(new BigDecimal(0));
+			mkCouponBindSum.setCouponsCount(0);
+			mkCouponBindSum.setCreateDate(new Date());
+			mkCouponBindSum.setCreateTime(new Date());
+			em.persist(mkCouponBindSum);
+		}	
+		//设置悲观锁
+		query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+		MkCouponBindSum defaultKey = query.singleResult(qMkCouponBindSum);	
+		return defaultKey;
+	}
+```
+#### 修改后的写法(方案1) ####
+该写法能够控制住统计量，唯一的缺点是需要分checkLock和getLock两个方法。
+
+```java
+    /**
+	 * 检查悲观锁-没有则新建一条
+	 * @param bizDate
+	 * @param couponType
+	 */
+	@Transactional
+	private void checkLock(Date bizDate, String couponType) {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		String sBizDate = sf.format(bizDate);
+		//查询当天统计记录
+		QMkCouponBindSum qMkCouponBindSum = QMkCouponBindSum.mkCouponBindSum;
+		JPAQuery query = new JPAQuery(em).from(qMkCouponBindSum)
+				.where(qMkCouponBindSum.sumKey.eq(sBizDate),
+						   qMkCouponBindSum.couponType.eq(couponType),
+						   qMkCouponBindSum.typeKey.eq(TypeKeyDef.D));
+		//如果没有则新建
+		MkCouponBindSum mkCouponBindSum = query.singleResult(qMkCouponBindSum);
+		if (mkCouponBindSum==null){
+			mkCouponBindSum = new MkCouponBindSum();
+			mkCouponBindSum.setSumKey(sBizDate);
+			mkCouponBindSum.setCouponType(couponType);
+			mkCouponBindSum.setTypeKey(TypeKeyDef.D);
+			mkCouponBindSum.setCouponsAmount(new BigDecimal(0));
+			mkCouponBindSum.setCouponsCount(0);
+			mkCouponBindSum.setCreateDate(new Date());
+			mkCouponBindSum.setCreateTime(new Date());
+			em.persist(mkCouponBindSum);
+		}	
+	}
+
+    /**
+	 * 获取悲观锁-获取发放统计记录表中当日该类型的悲观锁
+	 * @param bizDate
+	 * @param couponType
+	 */
+	@Transactional
+	private void getLock(Date bizDate, String couponType) {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+		String sBizDate = sf.format(bizDate);
+		//查询当天统计记录
+		QMkCouponBindSum qMkCouponBindSum = QMkCouponBindSum.mkCouponBindSum;
+		JPAQuery query = new JPAQuery(em).from(qMkCouponBindSum)
+				.where(qMkCouponBindSum.sumKey.eq(sBizDate),
+						   qMkCouponBindSum.couponType.eq(couponType),
+						   qMkCouponBindSum.typeKey.eq(TypeKeyDef.D));
+		//设置悲观锁
+		query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+		MkCouponBindSum defaultKey = query.singleResult(qMkCouponBindSum);	
+		return defaultKey;
+	}
+```
+
+#### 现在的写法(方案2) ####
+该方法是用不被修改的记录作为悲观锁。
+
+```java
+    /**
+	 * 获取悲观锁-获取发放统计记录表中该类型的悲观锁
+	 * @param couponType
+	 */
+	@Transactional
+	public MkCouponBindSum getLock(String couponType) {
+		//查询当天统计记录
+		QMkCouponBindSum qMkCouponBindSum = QMkCouponBindSum.mkCouponBindSum;
+		JPAQuery query = new JPAQuery(em).from(qMkCouponBindSum)
+				.where(qMkCouponBindSum.couponType.eq(couponType),
+						   qMkCouponBindSum.typeKey.eq(TypeKeyDef.LOCK));
+		
+		query.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+
+		//如果没有则新建
+		MkCouponBindSum mkCouponBindSum = query.singleResult(qMkCouponBindSum);
+		if (mkCouponBindSum==null){
+			mkCouponBindSum = new MkCouponBindSum();
+			mkCouponBindSum.setCouponType(couponType);
+			mkCouponBindSum.setTypeKey(TypeKeyDef.LOCK);
+			mkCouponBindSum.setCreateDate(new Date());
+			mkCouponBindSum.setCreateTime(new Date());
+			mkCouponBindSum.setLastUpdateTime(new Date());
+			em.persist(mkCouponBindSum);
+			return mkCouponBindSum;
+		}	
+		return mkCouponBindSum;
+	}
+```
+
+
+### 领取交易压测结果不理想？ ###
+
+#### 第一次 #### 
+
+平均tps还不到10（因为没有压测经验，还去问强哥这结果正不正常。。。）,下面是分析和解决过程：
+
++ 查看代码sql逻辑中常用的查询是否有漏加索引，想暂时排除漏加索引问题。
++ 分析交易中各阶段调用outbound的平均用时，发现只有转账用时相对较长，因为转账没有改动，那么问题可能不出在inbound中。
++ 整笔交易inbound中用时远大于outbound的耗时，那么排查processor中是否有新加查询逻辑。
++ 问题查到了，通过付款凭证号字段查询原消费记录时，原applepayTrans表中该字段没有加索引。
+
+
+#### 第二次 ####
+
+平均tps能达到30，但是觉得还不太理想，想把优惠券disptcher执行时间进一步优化到100ms以内，下面是优化步骤：
+
++ 在怀疑的sql语句前后加入debug日志，并把环境中的日志级别调至debug
++ 优化查询逻辑，减少了几个.list（）方法
++ 对于多条件SQL语句进行分析，按照最左原则，调整了部分建立索引时的顺序
+
+
+#### 第三次 ####
+
+平均tps又提高了一些，但不是太明显。分析原因为悲观锁的机制引起的排队，下面是分析步骤：
+
++ 通过排序找几笔处理时间较长的交易
++ 查看debug日志，查看哪部分sql占用时间最长
++ 经过分析，大部分时间用于等锁，真正执行查询和更新的时间一共只有30ms左右
++ 经过计算发现，下面的压测数据基本符合等锁耗费时间
+
+并发数|总时间|平均响应|平均tps
+-|-|-|-
+30|10分钟|0.736|40.016
+100|10分钟|3.014|32.742
+180|10分钟|4.79|37.023
+
+## 总结 ## 
+
+通过这次参与部分设计和开发，我归纳的合适的开发过程可如下：
+1. 提取需求中的开发点
+2. 设计合理的参数和表结构
+3. 尽量规划代码模块化，减少冗余
+4. 解决问题时不要凭空尝试，可从问题的根部倒推，逐级排查。
+

@@ -33,5 +33,15 @@
 		        <%}%>
 			</div>
 		</nav>
-	</header>		
+		
+	</header>
+	
 </div>
+<!--开启音乐播放器-->
+		<nav class="header-music">
+		<% if (theme.background_music.enable){ %>
+			<audio controls="controls" autoplay="autoplay" loop="loop">
+				<source src=<%= theme.background_music.src %> type="audio/mp3" />
+			</audio>
+		<% } %>
+		</nav>

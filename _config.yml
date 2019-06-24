@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://xiajunyi.com
+url: https://www.xiajunyi.com
 root: /
 ## permalink: :year/:month/:day/:title/
 permalink: pages/:title.html
@@ -75,16 +75,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: yilia
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: git@github.com:xiajunyi/xiajunyi.github.io.git
-  branch: master
-  message: 'xjy new post:{{now("YYYY-MM-DD HH/mm/ss")}}'
-
-
-
 #yilia主题附加
 jsonContent:
     meta: false
@@ -109,6 +99,7 @@ jsonContent:
 plugin:
     - hexo-generator-feed
     - hexo-generator-sitemap
+    - hexo-generator-baidu-sitemap
 #RSS 插件配置
 feed:
   type: rss2
@@ -119,3 +110,22 @@ feed:
 #siteMap插件配置
 sitemap:
     path: sitemap.xml
+
+#baiduSiteMap插件
+baidusitemap:
+    path: baidusitemap.xml
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+##deploy:
+##  type: git
+##  repo: git@github.com:xiajunyi/xiajunyi.github.io.git
+##  branch: master
+##  message: 'xjy new post:{{now("YYYY-MM-DD HH/mm/ss")}}'
+
+deploy:
+  type: sftp
+  host: 23.83.224.98
+  user: root
+  privateKey: /root/.ssh/id_rsa
+  remotePath: /data/www/hexo
