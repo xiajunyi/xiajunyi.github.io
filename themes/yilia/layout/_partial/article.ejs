@@ -121,8 +121,8 @@
       <% if (theme.cusdis && ((theme.declare_type === 2 || (theme.declare_type === 1 && post.declare)) && !index)){ %>
         <div style="margin-top:20px;margin-left: 8%;margin-right: 8%;">
         <div style="text-align:center; margin-top:20px; margin-bottom: 20px;" ><strong>欢迎来到评论区</strong></div>
-          <script defer src="http://cusdis.xiajunyi.com/js/widget/lang/zh-cn.js"></script>
-          <script defer src="http://cusdis.xiajunyi.com/js/cusdis.es.js"></script>
+          <script defer src="https://cusdis.xiajunyi.com/js/widget/lang/zh-cn.js"></script>
+          <script defer src="https://cusdis.xiajunyi.com/js/cusdis.es.js"></script>
           <div id="cusdis_thread" data-host="<%= theme.cusdis_host %>" data-app-id="<%= theme.cusdis_appid %>"
             data-page-id="<%= post.slug%>" data-page-url="<%= config.url+url_for(post.path) %>" data-page-title="<%= post.title %>"
             data-theme = "auto"

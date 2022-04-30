@@ -97,7 +97,7 @@ changyan_conf: prod_d15f92d288a4dbf0e9ddf361b4f87fda
 
 #4、Disqus 在hexo根目录的config里也有disqus_shortname字段，优先使用yilia的
 cusdis: true
-cusdis_host: http://cusdis.xiajunyi.com
+cusdis_host: https://cusdis.xiajunyi.com
 cusdis_appid: 4d0c5b2e-e507-46da-abae-7233242d7bb2
 disqus: false
 
