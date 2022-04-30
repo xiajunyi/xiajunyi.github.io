@@ -10,7 +10,6 @@ menu:
   建站技术: /tags/建站/
   rabbitmq: /tags/rabbitmq/
   docker: /tags/docker/
-  big data: /tags/大数据/
 
 # SubNav
 subnav:
@@ -92,10 +91,14 @@ duoshuo: true
 wangyiyun: true
 
 #3、畅言
+changyan: false
 changyan_appid: cytCkNokt
 changyan_conf: prod_d15f92d288a4dbf0e9ddf361b4f87fda
 
 #4、Disqus 在hexo根目录的config里也有disqus_shortname字段，优先使用yilia的
+cusdis: true
+cusdis_host: http://cusdis.xiajunyi.com
+cusdis_appid: 4d0c5b2e-e507-46da-abae-7233242d7bb2
 disqus: false
 
 #5、Gitment
