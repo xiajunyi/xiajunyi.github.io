@@ -2,14 +2,15 @@
 
 menu:
   主页: /
-  闲谈娱乐: /tags/闲谈/
-  树莓派学习: /tags/树莓派/
-  数据库知识: /tags/数据库/
   编程技术: /tags/编程/
-  运维技术: /tags/运维/
-  建站技术: /tags/建站/
-  rabbitmq: /tags/rabbitmq/
-  docker: /tags/docker/
+  运维拓展: /tags/运维/
+  数据库知识: /tags/数据库/
+  docker记录: /tags/docker/
+  # 建站技术: /tags/建站/
+  # rabbitmq: /tags/rabbitmq/
+  树莓派学习: /tags/树莓派/
+  软路由探索: /tags/软路由/
+  闲谈娱乐: /tags/闲谈/
 
 # SubNav
 subnav:
