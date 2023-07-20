@@ -1,0 +1,2210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p78.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>使用kubeAdm搭建K8S集群实战记录</title>
+        <pubTime>2021-04-28T11:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>K8S</tag>
+         
+        <tag>kubelet</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p79.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>Ingress Controller之Nginx-Ingress的安装和使用记录</title>
+        <pubTime>2021-05-20T11:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>K8S</tag>
+         
+        <tag>kubelet</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p100.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>Docker-Compose配置（六）搭建SRS流媒体服务端</title>
+        <pubTime>2023-07-02T11:18:15.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>docker-compose</tag>
+         
+        <tag>Rtmp</tag>
+         
+        <tag>SRS</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+             
+              <breadCrumb title="树莓派" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p101.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>内网穿透之NPS服务端搭建</title>
+        <pubTime>2023-07-09T05:16:15.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>内网穿透</tag>
+         
+        <tag>NPS</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p88.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>造百万条Mysql测试数据</title>
+        <pubTime>2022-05-18T11:58:55.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>Sql</tag>
+         
+        <tag>Mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p89.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>el-switch组件v-model对于scope不生效问题</title>
+        <pubTime>2022-07-21T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>前端</tag>
+         
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p92.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>PostgreSQL忘记密码</title>
+        <pubTime>2023-01-31T05:16:15.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>PG</tag>
+         
+        <tag>PostgresSql</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p93.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>PostgreSQL构造雪花算法</title>
+        <pubTime>2023-02-01T05:16:15.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>PG</tag>
+         
+        <tag>PostgresSql</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p98.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>软路由之Dlink-Dir859刷Breed“不死鸟”</title>
+        <pubTime>2023-05-30T07:18:15.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>软路由</tag>
+         
+        <tag>openwrt</tag>
+         
+        <tag>breed</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+             
+              <breadCrumb title="软路由" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p99.html</loc>
+    <lastmod>2023-07-20T15:41:57.876Z</lastmod>
+    <data>
+        <display>
+        <title>软路由之编译Lede-Openwrt软路由系统</title>
+        <pubTime>2023-06-02T10:18:15.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>软路由</tag>
+         
+        <tag>openwrt</tag>
+         
+        <tag>LEDE</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/"/>
+          
+             
+              <breadCrumb title="软路由" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4/%E8%BD%AF%E8%B7%AF%E7%94%B1/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p9.html</loc>
+    <lastmod>2022-04-30T11:28:32.353Z</lastmod>
+    <data>
+        <display>
+        <title>Git的诞生</title>
+        <pubTime>2018-03-11T04:10:56.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>git</tag>
+         
+        <tag>csv</tag>
+         
+        <tag>故事</tag>
+         
+         
+           
+             
+              <breadCrumb title="未分类" url="https://www.xiajunyi.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p72.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>Docker实战-一个网页转pdf工具的docker镜像创建到发布</title>
+        <pubTime>2020-09-21T12:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="DOCKER" url="https://www.xiajunyi.com/categories/DOCKER/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p73.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录5:快速构建自定义脚手架</title>
+        <pubTime>2020-10-20T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>ArcheType</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p74.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录6:集成Slueth和Zipkin实现分布式追踪</title>
+        <pubTime>2021-02-02T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>Slueth</tag>
+         
+        <tag>Zipkin</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p75.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录7:集成Actuator和Admin实现健康性能监测</title>
+        <pubTime>2021-02-05T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>Admin</tag>
+         
+        <tag>Actuator</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p76.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud Gateway配置记录1</title>
+        <pubTime>2021-02-26T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>Spring Cloud Gateway</tag>
+         
+        <tag>Spring Cloud</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p77.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录8:实现MyBatis多数据源操作</title>
+        <pubTime>2021-02-26T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>MyBatis</tag>
+         
+        <tag>Spring Boot</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p8.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>wordpress网站迁移：更换域名、开启SSL支持（解决https无法访问wordpress后台的问题）</title>
+        <pubTime>2018-02-03T11:26:55.000Z</pubTime>
+        
+        <tag>wordpress</tag>
+         
+        <tag>建站</tag>
+         
+        <tag>域名</tag>
+         
+        <tag>ssl</tag>
+         
+        <tag>https</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORDPRESS" url="https://www.xiajunyi.com/categories/WORDPRESS/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/WORDPRESS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p80.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>git文件过大无法正常clone的一种解决方式</title>
+        <pubTime>2021-11-20T11:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维技术" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/"/>
+          
+             
+              <breadCrumb title="Git" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p81.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>实现SpringBoot项目中Apollo配置的动态解密</title>
+        <pubTime>2021-11-30T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>Apollo</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+             
+              <breadCrumb title="Apollo" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/Apollo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p82.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>接口调试过程中的小技巧</title>
+        <pubTime>2021-12-08T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>Apollo</tag>
+         
+        <tag>Postman</tag>
+         
+        <tag>Fiddler</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p83.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>Arthus使用指南（转）</title>
+        <pubTime>2022-01-11T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>Java</tag>
+         
+        <tag>Arthas</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p84.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>Docker-Compose配置（四）搭建Ldap系统</title>
+        <pubTime>2022-02-08T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>Ldap</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p85.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>Docker-Compose配置（五）搭建KooTeam在线团队协作系统</title>
+        <pubTime>2022-03-01T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>Kooteam</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p86.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>X-Pack破解实验及Elk集成Ldap</title>
+        <pubTime>2022-03-29T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>Ldap</tag>
+         
+        <tag>Elk</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p87.html</loc>
+    <lastmod>2022-04-30T11:28:32.352Z</lastmod>
+    <data>
+        <display>
+        <title>使用Kibana制作上海疫情看板</title>
+        <pubTime>2022-04-30T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>Elk</tag>
+         
+        <tag>新冠</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p50.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>公交查询微信小程序的实现</title>
+        <pubTime>2018-09-12T01:36:09.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>微信</tag>
+         
+        <tag>小程序</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p51.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Git命令的积累</title>
+        <pubTime>2017-09-12T01:35:09.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p52.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>IDEA跑JUNIT测试案例时TCP模式连接H2数据库超时问题</title>
+        <pubTime>2018-09-29T08:20:46.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p54.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop伪分布式安装及配置-HDFS</title>
+        <pubTime>2018-11-09T13:07:24.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p55.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop伪分布式安装及配置-YARN</title>
+        <pubTime>2018-11-16T03:16:33.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p56.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>OCR学习记录之Tesseract OCR</title>
+        <pubTime>2018-12-29T10:58:33.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p57.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>ELK日志分析系统搭建-入门记录</title>
+        <pubTime>2019-01-11T04:58:33.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p58.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Centos搭建ShadowSocks服务端</title>
+        <pubTime>2019-03-01T10:33:33.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p59.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Centos7搭建V2ray服务</title>
+        <pubTime>2019-06-23T12:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p6.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>wordpress文章迁移到hexo next及主题美化</title>
+        <pubTime>2018-03-18T09:10:01.000Z</pubTime>
+        
+        <tag>wordpress</tag>
+         
+        <tag>建站</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>文章迁移</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORDPRESS" url="https://www.xiajunyi.com/categories/WORDPRESS/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/WORDPRESS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p60.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Docker-Compose配置（一）Mysql+PhpMyAdmin+Portainer</title>
+        <pubTime>2019-08-23T12:58:55.000Z</pubTime>
+        
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="DOCKER" url="https://www.xiajunyi.com/categories/DOCKER/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p61.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>ArcMap使用记录-批量导入经纬度及绘制坐标点导出</title>
+        <pubTime>2019-10-20T12:58:55.000Z</pubTime>
+        
+        <tag>ArcMap</tag>
+         
+         
+           
+             
+              <breadCrumb title="运维技术" url="https://www.xiajunyi.com/categories/%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p62.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Docker-Compose配置（二）Zookeeper+Kafka+KafkaManager</title>
+        <pubTime>2019-11-05T12:58:55.000Z</pubTime>
+        
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="DOCKER" url="https://www.xiajunyi.com/categories/DOCKER/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p63.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>MongoDB语句常用记录</title>
+        <pubTime>2019-11-05T13:58:55.000Z</pubTime>
+        
+        <tag>sql</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>MongoDB</tag>
+         
+         
+           
+             
+              <breadCrumb title="MongoDB" url="https://www.xiajunyi.com/categories/MongoDB/"/>
+          
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/MongoDB/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p64.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>动手搭建家庭NAS服务中心</title>
+        <pubTime>2019-12-31T13:58:55.000Z</pubTime>
+        
+        <tag>NAS</tag>
+         
+        <tag>黑群晖</tag>
+         
+        <tag>KODI</tag>
+         
+         
+           
+             
+              <breadCrumb title="NAS" url="https://www.xiajunyi.com/categories/NAS/"/>
+          
+             
+              <breadCrumb title="KODI" url="https://www.xiajunyi.com/categories/NAS/KODI/"/>
+          
+             
+              <breadCrumb title="FRP" url="https://www.xiajunyi.com/categories/NAS/KODI/FRP/"/>
+          
+             
+             
+             
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p65.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>ElasticSearch语句常用记录</title>
+        <pubTime>2020-03-26T13:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>sql</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>ElasticSearch</tag>
+         
+         
+           
+             
+              <breadCrumb title="ElasticSearch" url="https://www.xiajunyi.com/categories/ElasticSearch/"/>
+          
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/ElasticSearch/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p66.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>Docker-Compose配置（三）Kibana+ElasticSearch</title>
+        <pubTime>2020-03-26T12:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="DOCKER" url="https://www.xiajunyi.com/categories/DOCKER/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p67.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>ELK实战-nginx实时日志到es</title>
+        <pubTime>2020-07-21T10:58:55.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+         
+           
+             
+              <breadCrumb title="DOCKER" url="https://www.xiajunyi.com/categories/DOCKER/"/>
+          
+             
+              <breadCrumb title="ELK" url="https://www.xiajunyi.com/categories/DOCKER/ELK/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p68.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录1:集成Mybatis</title>
+        <pubTime>2020-08-13T10:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>sSpringBoot</tag>
+         
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程技术" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p69.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录2:集成Mybatis-Plus</title>
+        <pubTime>2020-08-13T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>MyBatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p7.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>wordpress网站由apache改为nginx发布</title>
+        <pubTime>2018-01-27T12:17:40.000Z</pubTime>
+        
+        <tag>wordpress</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>建站</tag>
+         
+        <tag>apache</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORDPRESS" url="https://www.xiajunyi.com/categories/WORDPRESS/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/WORDPRESS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p70.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录3:集成Consul配置中心</title>
+        <pubTime>2020-08-14T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>Consul</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p71.html</loc>
+    <lastmod>2022-04-30T11:28:32.351Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot实战记录4:集成Nacos配置中心</title>
+        <pubTime>2020-08-18T11:58:55.000Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>SpringBoot</tag>
+         
+        <tag>Nacos</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p35.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Docker初学（一）安装并操作容器</title>
+        <pubTime>2018-05-12T12:58:29.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="docker" url="https://www.xiajunyi.com/categories/docker/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/docker/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p36.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Docker初学（二）自定义构建镜像并发布</title>
+        <pubTime>2018-05-17T09:11:50.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="docker" url="https://www.xiajunyi.com/categories/docker/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/docker/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p37.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS 7 安装并配置Shadowsocks客户端</title>
+        <pubTime>2018-05-19T14:13:45.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>shadowsocks</tag>
+         
+         
+           
+             
+              <breadCrumb title="centos" url="https://www.xiajunyi.com/categories/centos/"/>
+          
+             
+              <breadCrumb title="shadowsocks" url="https://www.xiajunyi.com/categories/centos/shadowsocks/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p38.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx配置端口转发遇到no resolver defined错误</title>
+        <pubTime>2018-05-20T05:20:05.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>错误</tag>
+         
+         
+           
+             
+              <breadCrumb title="nginx" url="https://www.xiajunyi.com/categories/nginx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p39.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx内置变量大全</title>
+        <pubTime>2017-05-20T05:34:34.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="nginx" url="https://www.xiajunyi.com/categories/nginx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p4.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>TypeError: exchange_declare() got an unexpected keyword argument 'type'的解决办法</title>
+        <pubTime>2018-01-08T06:59:25.000Z</pubTime>
+        
+        <tag>rabbitmq</tag>
+         
+        <tag>错误解决</tag>
+         
+         
+           
+             
+              <breadCrumb title="rabbitmq学习" url="https://www.xiajunyi.com/categories/rabbitmq%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p40.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Gitlab安装及配置</title>
+        <pubTime>2018-05-20T05:34:34.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>gitlab</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="https://www.xiajunyi.com/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p41.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Github的webhook触发vps上的脚本</title>
+        <pubTime>2018-05-23T09:04:15.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>github</tag>
+         
+        <tag>webhook</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="https://www.xiajunyi.com/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p42.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Gitlab的第一个Runners配置(shared类型)</title>
+        <pubTime>2018-05-23T09:04:15.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>gitlab</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="https://www.xiajunyi.com/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p43.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>Docker初学（三）docker-compose的使用</title>
+        <pubTime>2018-05-31T02:17:36.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>linux</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="docker" url="https://www.xiajunyi.com/categories/docker/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/docker/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p45.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>【转】2018程序员不能错过的编程挑战网站 Top10</title>
+        <pubTime>2017-06-22T10:58:22.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="闲谈" url="https://www.xiajunyi.com/categories/%E9%97%B2%E8%B0%88/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E9%97%B2%E8%B0%88/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p46.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>几张思维导图</title>
+        <pubTime>2017-06-29T06:55:05.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="闲谈" url="https://www.xiajunyi.com/categories/%E9%97%B2%E8%B0%88/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E9%97%B2%E8%B0%88/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p48.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Linux内核OOM机制的详细分析</title>
+        <pubTime>2018-08-06T08:07:19.000Z</pubTime>
+        
+        <tag>编程，Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p49.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>【转】git 使用简易指南</title>
+        <pubTime>2017-08-14T06:13:48.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p5.html</loc>
+    <lastmod>2022-04-30T11:28:32.350Z</lastmod>
+    <data>
+        <display>
+        <title>vps+github上安装hexo next个人博客网站</title>
+        <pubTime>2018-03-18T07:41:42.000Z</pubTime>
+        
+        <tag>博客</tag>
+         
+        <tag>github</tag>
+         
+        <tag>建站</tag>
+         
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORDPRESS" url="https://www.xiajunyi.com/categories/WORDPRESS/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/WORDPRESS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p10.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>该文章用于记录树莓派custshell的配置</title>
+        <pubTime>2018-01-07T07:52:24.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+         
+           
+             
+              <breadCrumb title="未分类" url="https://www.xiajunyi.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p11.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>笛子指法全表</title>
+        <pubTime>2018-01-14T08:11:50.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>音乐</tag>
+         
+        <tag>乐器</tag>
+         
+        <tag>笛子</tag>
+         
+         
+           
+             
+              <breadCrumb title="乐器知识" url="https://www.xiajunyi.com/categories/%E4%B9%90%E5%99%A8%E7%9F%A5%E8%AF%86/"/>
+          
+             
+              <breadCrumb title="生活杂记" url="https://www.xiajunyi.com/categories/%E4%B9%90%E5%99%A8%E7%9F%A5%E8%AF%86/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p12.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>用StatSVN统计SVN库中各作者的提交情况和排行</title>
+        <pubTime>2018-02-09T07:36:46.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>StatSVN</tag>
+         
+        <tag>SVN</tag>
+         
+        <tag>技术</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://www.xiajunyi.com/categories/JAVA/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/JAVA/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p13.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>测试mqtt与rabbitmq的消息交互</title>
+        <pubTime>2018-01-09T00:35:04.000Z</pubTime>
+        
+        <tag>rabbitmq</tag>
+         
+        <tag>mqtt</tag>
+         
+         
+           
+             
+              <breadCrumb title="rabbitmq" url="https://www.xiajunyi.com/categories/rabbitmq/"/>
+          
+             
+              <breadCrumb title="mqtt" url="https://www.xiajunyi.com/categories/rabbitmq/mqtt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p14.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-SHT31温湿度读取（I2C接口）</title>
+        <pubTime>2017-12-10T11:13:38.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>sht31</tag>
+         
+        <tag>i2c</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p15.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-python实现用socket传输json数据</title>
+        <pubTime>2017-12-11T14:56:16.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>python</tag>
+         
+        <tag>socket</tag>
+         
+        <tag>json</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p16.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-ngrok实现开机自启及手机远程SSH访问</title>
+        <pubTime>2017-12-16T07:36:27.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>ngrok</tag>
+         
+        <tag>ssh</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p17.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-搭建外网ngrok穿透内网访问到树莓派</title>
+        <pubTime>2017-12-14T14:57:25.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>ngrok</tag>
+         
+        <tag>内网穿透</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p18.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-忘记密码后重设</title>
+        <pubTime>2017-12-10T10:08:09.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>忘记密码</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p19.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-实现USB摄像头在web端访问</title>
+        <pubTime>2017-12-26T14:43:07.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>摄像头</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p2.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>php-fpm占用大量内存的解决方法</title>
+        <pubTime>2018-01-27T14:12:35.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>php</tag>
+         
+        <tag>wordpress</tag>
+         
+        <tag>php-fpm</tag>
+         
+        <tag>博客</tag>
+         
+         
+           
+             
+              <breadCrumb title="WORDPRESS" url="https://www.xiajunyi.com/categories/WORDPRESS/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/WORDPRESS/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p20.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-创建crontab任务</title>
+        <pubTime>2017-12-12T14:20:44.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>crontab</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p21.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-先装好环境跑起来</title>
+        <pubTime>2017-12-10T09:57:14.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>ssh</tag>
+         
+        <tag>Win32DiskImager</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p22.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>树莓派学习-DHT11温湿度读取（GPIO接口）</title>
+        <pubTime>2017-12-10T10:35:30.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>python</tag>
+         
+        <tag>dht11</tag>
+         
+        <tag>gpio</tag>
+         
+        <tag>传感器</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p23.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>搭建之路1-基于redhat</title>
+        <pubTime>2018-02-06T03:25:38.000Z</pubTime>
+        
+        <tag>运维</tag>
+         
+        <tag>java</tag>
+         
+        <tag>maven</tag>
+         
+        <tag>svn</tag>
+         
+        <tag>jenkins</tag>
+         
+        <tag>nexus</tag>
+         
+        <tag>redhat</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://www.xiajunyi.com/categories/JAVA/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/JAVA/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p24.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>我的文章丢了</title>
+        <pubTime>2017-12-10T09:37:45.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>wordpress</tag>
+         
+        <tag>sql</tag>
+         
+        <tag>数据</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>备份</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活杂记" url="https://www.xiajunyi.com/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p25.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>常用的apt-get命令</title>
+        <pubTime>2018-01-28T05:07:24.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>运维</tag>
+         
+        <tag>apt</tag>
+         
+        <tag>apt-get</tag>
+         
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="LINUX" url="https://www.xiajunyi.com/categories/LINUX/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/LINUX/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p27.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>从SVN到GITLAB的搭建计划</title>
+        <pubTime>2018-02-06T01:58:29.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>svn</tag>
+         
+        <tag>gitlab</tag>
+         
+        <tag>感悟</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术感悟" url="https://www.xiajunyi.com/categories/%E6%8A%80%E6%9C%AF%E6%84%9F%E6%82%9F/"/>
+          
+             
+              <breadCrumb title="生活杂记" url="https://www.xiajunyi.com/categories/%E6%8A%80%E6%9C%AF%E6%84%9F%E6%82%9F/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p28.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>db2相关操作知识点积累及WINDOWS环境DB2连接远程数据库实例</title>
+        <pubTime>2017-12-22T08:34:40.000Z</pubTime>
+        
+        <tag>sql</tag>
+         
+        <tag>数据库</tag>
+         
+        <tag>db2</tag>
+         
+         
+           
+             
+              <breadCrumb title="DB2" url="https://www.xiajunyi.com/categories/DB2/"/>
+          
+             
+              <breadCrumb title="数据库" url="https://www.xiajunyi.com/categories/DB2/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p29.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>base64加解密图片（分别用java和python实现）</title>
+        <pubTime>2018-01-04T03:22:48.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>java</tag>
+         
+        <tag>编程</tag>
+         
+        <tag>base64</tag>
+         
+        <tag>图片处理</tag>
+         
+        <tag>加密</tag>
+         
+        <tag>解密</tag>
+         
+         
+           
+             
+              <breadCrumb title="JAVA" url="https://www.xiajunyi.com/categories/JAVA/"/>
+          
+             
+              <breadCrumb title="编程语言" url="https://www.xiajunyi.com/categories/JAVA/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p30.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>用python测试连接rabbitmq的简单通讯</title>
+        <pubTime>2018-01-08T07:06:12.000Z</pubTime>
+        
+        <tag>rabbitmq</tag>
+         
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="rabbitmq学习" url="https://www.xiajunyi.com/categories/rabbitmq%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p31.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>1代树莓派改造</title>
+        <pubTime>2018-02-04T17:29:56.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+        <tag>python</tag>
+         
+        <tag>wlan</tag>
+         
+         
+           
+             
+              <breadCrumb title="树莓派学习" url="https://www.xiajunyi.com/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.xiajunyi.com/pages/p34.html</loc>
+    <lastmod>2022-04-30T11:28:32.349Z</lastmod>
+    <data>
+        <display>
+        <title>举例说明弱密码摄像头的坏处</title>
+        <pubTime>2018-05-11T13:32:44.000Z</pubTime>
+        
+        <tag>闲谈</tag>
+         
+        <tag>运维</tag>
+         
+        <tag>摄像头</tag>
+         
+        <tag>破解</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
